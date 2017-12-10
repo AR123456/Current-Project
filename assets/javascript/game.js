@@ -84,7 +84,7 @@ document.getElementById("wrongGuesses").innerHTML = badGuess.join("  ");
     if(matchingLetters.toString() == underscoreWord.toString()){
         winCount ++;
     //emojilogic 
-    emoji.src = 'assets/images/grinningFace.png';
+    emoji.src = './assets/images/grinningFace.png';
     emoji.setAttribute('style', 'z-index: 1;');
     document.getElementById('face').appendChild(emoji);
 
@@ -101,7 +101,7 @@ document.getElementById("wrongGuesses").innerHTML = badGuess.join("  ");
     else if (guessesLeft == 0) {
         lossCount++;
        // emojiLogic();
-       emoji.src = 'assets/images/dizzyFace.png';
+       emoji.src = './assets/images/dizzyFace.png';
        emoji.setAttribute('style', 'z-index: 1;');
        document.getElementById('face').appendChild(emoji);
         alert ("You lost! The correct word was: " + currentWord );
