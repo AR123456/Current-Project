@@ -1,0 +1,21 @@
+
+body{
+    /* background-color: peachpuff; */
+    background: url('../images/backgroundER2.png');
+   
+}
+.subheader{
+    color: #fff; 
+    
+ 
+}
+.row{
+    margin: 20px;
+    /* float: left; */
+
+}
+/* 
+.col{
+    float:left;
+
+} */
