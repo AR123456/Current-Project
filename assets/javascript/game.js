@@ -88,14 +88,14 @@ document.getElementById("wrongGuesses").innerHTML = badGuess.join("  ");
     emoji.setAttribute('style', 'z-index: 1;');
     document.getElementById('face').appendChild(emoji);
 
-
-        // document.getElementById('FrayHang').play();
-        alert("You Won! The word is : " + currentWord );
-      
-
+        
         // send to the win counter in HTML
         document.getElementById("winCounter").innerHTML = winCount;
-        startGame();
+        setTimeout(function(){
+            alert("You Won! The word is : " + currentWord );
+            startGame();
+        },1000)
+      
     }
     // check if user lost 
     else if (guessesLeft == 0) {
@@ -104,6 +104,7 @@ document.getElementById("wrongGuesses").innerHTML = badGuess.join("  ");
        emoji.src = './assets/images/dizzyFace.png';
        emoji.setAttribute('style', 'z-index: 1;');
        document.getElementById('face').appendChild(emoji);
+              
         alert ("You lost! The correct word was: " + currentWord );
         // send loss to counter in HTML
         document.getElementById("lossCount").innerHTML = lossCount;
