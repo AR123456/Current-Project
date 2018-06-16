@@ -1,4 +1,1 @@
-# Hangman-Game with a Neuroanatomy twist writtend in pure plain vanilly Javascript
-
-#Yummny
-![](assets/images/brain.png)
+# Hangman-Game with a Neuroanatomy twist written in pure plain vanilla Javascript! Yummy
