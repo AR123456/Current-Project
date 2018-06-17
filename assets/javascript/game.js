@@ -26,6 +26,8 @@ const wordList = [
   "proprioception",
   "neuron"
 ];
+const fray = new Audio("assets/images/frayhang.mp3");
+const flat = new Audio("assets/images/flat.mp3");
 let currentWord = ""; // for each letter here create a corresponding blank in the underscore array
 let matchingLetters = []; //holds the matching letters
 let numBlanks = 0; //number of letters in word
@@ -77,7 +79,7 @@ function checkLetters(letter) {
     }
   }
 
-  //check where in word the letter is an if not go to bad guess
+  //check where in word the letter is and if not go to bad guess
   if (isLetterInWord) {
     for (let i = 0; i < numBlanks; i++) {
       if (currentWord[i] == letter) {
@@ -113,7 +115,7 @@ function roundComplete() {
   // Check if user won
   if (matchingLetters.toString() == underscoreWord.toString()) {
     winCount++;
-    //emoji logic
+    fray.play();
     emoji.src = "./assets/images/grinningFace.png";
     emoji.setAttribute("style", "z-index: 1;");
     document.getElementById("face").appendChild(emoji);
@@ -128,13 +130,13 @@ function roundComplete() {
   // check if user lost
   else if (guessesLeft == 0) {
     lossCount++;
-    // emoji logic
+    flat.play();
     emoji.src = "./assets/images/dizzyFace.png";
     emoji.setAttribute("style", "z-index: 1;");
     document.getElementById("face").appendChild(emoji);
 
     alert("You lost! The correct word was: " + currentWord);
-    // send loss to counter in HTML
+
     document.getElementById("lossCount").innerHTML = lossCount;
     startGame();
   }
