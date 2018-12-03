@@ -1,52 +1,50 @@
-const endpoint =
-  "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+const canvas = document.querySelector("#draw");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+ctx.strokeStyle = "#BADA55";
+ctx.lineJoin = "round";
+ctx.lineCap = "round";
+ctx.lineWidth = 100;
 
-const cities = [];
-//using fetch that comes with the browser
-fetch(endpoint)
-  .then(blob => blob.json())
-  .then(data => cities.push(...data));
+let isDrawing = false;
+let lastX = 0;
+let lastY = 0;
+let hue = 0;
+let direction = true;
 
-function findMatches(wordToMatch, cities) {
-  return cities.filter(place => {
-    // figure out if the city or state matches what was searched.
-    //use some regex ? how do you put a variable into a regular expression m make a const ...
-    const regex = new RegExp(wordToMatch, "gi");
-    return place.city.match(regex) || place.state.match(regex);
-  });
+function draw(e) {
+  if (!isDrawing) return; // to stop function from running when they mouse is not held down
+  console.log(e);
+  ctx.strokeStyle = ` hsl(${hue},100%, 50%)`;
+
+  ctx.beginPath();
+  // start from
+  ctx.moveTo(lastX, lastY);
+  //go to
+  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.stroke();
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+  hue++;
+  if (hue >= 360) {
+    hue = 0;
+  }
+  if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+    direction = !direction;
+  }
+  if (direction) {
+    ctx.lineWidth++;
+  } else {
+    ctx.lineWidth--;
+  }
 }
-function numberWithCommas(x) {
-  //regex
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-function displayMatches() {
-  const matchArray = findMatches(this.value, cities);
-  const html = matchArray
-    .map(place => {
-      const regex = new RegExp(this.value, "gi");
-      const cityName = place.city.replace(
-        regex,
-        `<span class="hl">${this.value}</span>`
-      );
-      const stateName = place.state.replace(
-        regex,
-        `<span class="hl">${this.value}</span>`
-      );
 
-      return `
-                            <li>
-                            <span class="name">${cityName},${stateName}</span>
-                            <span class="population">${numberWithCommas(
-                              place.population
-                            )} </span>
-                            </li>
-                            `;
-    })
-    .join("");
-  suggestions.innerHTML = html;
-}
-const searchInput = document.querySelector(".search");
-const suggestions = document.querySelector(".suggestions");
+canvas.addEventListener("mousedown", e => {
+  isDrawing = true;
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+});
 
-searchInput.addEventListener("change", displayMatches);
-searchInput.addEventListener("keyup", displayMatches);
+canvas.addEventListener("mousemove", draw);
+
+canvas.addEventListener("mouseup", () => (isDrawing = false));
+canvas.addEventListener("mouseout", () => (isDrawing = false));
