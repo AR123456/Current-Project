@@ -1,11 +1,22 @@
-const panels = document.querySelectorAll(".panel");
-function toggleOpen() {
-  this.classList.toggle("open");
-}
-function toggleActive(e) {
-  if (e.propertyName.includes("flex")) {
-    this.classList.toggle("open-active");
+const checkboxes = document.querySelectorAll('.inbox input[type="checkbox"]');
+let lastChecked;
+function handleCheck(e) {
+  //check if he shift key is down
+  //if putting check in box
+  let inBetween = false;
+
+  if (e.shiftKey && this.checked) {
+    //loop over in between check boxes
+    checkboxes.forEach(checkbox => {
+      console.log(checkbox);
+      if (checkbox === this || checkbox === lastChecked) {
+        inBetween = !inBetween;
+      }
+      if (inBetween) {
+        checkbox.checked = true;
+      }
+    });
   }
+  lastChecked = this;
 }
-panels.forEach(panel => panel.addEventListener("click", toggleOpen));
-panels.forEach(panel => panel.addEventListener("transitionend", toggleActive));
+checkboxes.forEach(checkbox => checkbox.addEventListener("click", handleCheck));
