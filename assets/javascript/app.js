@@ -1,25 +1,41 @@
-const hero = document.querySelector(".hero");
-const text = hero.querySelector("h1");
-const walk = 500; // 100px
+const bands = [
+  "The Plot in You",
+  "The Devil Wears Prada",
+  "Pierce the Veil",
+  "Norma Jean",
+  "The Bled",
+  "Say Anything",
+  "The Midway State",
+  "We Came as Romans",
+  "Counterparts",
+  "Oh, Sleeper",
+  "A Skylit Drive",
+  "Anywhere But Here",
+  "An Old Dog"
+];
 
-function shadow(e) {
-  const { offsetWidth: width, offsetHeight: height } = hero;
-  let { offsetX: x, offsetY: y } = e;
-
-  if (this !== e.target) {
-    x = x + e.target.offsetLeft;
-    y = y + e.target.offsetTop;
-  }
-
-  const xWalk = Math.round((x / width) * walk - walk / 2);
-  const yWalk = Math.round((y / height) * walk - walk / 2);
-
-  text.style.textShadow = `
-    ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
-    ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
-    ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
-    ${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7)
-  `;
+function strip(bandName) {
+  return bandName.replace(/^(a |the |an )/i, "").trim();
 }
+// const sortedBands = bands.sort(function(a, b) {
+//   if (strip(a) > strip(b)) {
+//     return 1;
+//   } else {
+//     return -1;
+//   }
+// });
 
-hero.addEventListener("mousemove", shadow);
+//  same using turnary operator
+
+// const sortedBands = bands.sort(function(a, b) {
+//   return strip(a) > strip(b) ? 1 : -1;
+// });
+
+// with arrow and implicit  return
+const sortedBands = bands.sort((a, b) => (strip(a) > strip(b) ? 1 : -1));
+
+document.querySelector("#bands").innerHTML = sortedBands
+  .map(band => `<li>${band}</li>`)
+  .join("");
+
+console.log(sortedBands);
