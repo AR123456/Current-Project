@@ -8,20 +8,46 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
-    <!-- font awsome -->
-    <script src="https://use.fontawesome.com/4ea1cb92b3.js"></script>
-    <link rel="stylesheet" type="text/css" href="./assets/css/foundation.css" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Amatic+SC"
-      rel="stylesheet"
-      type="text/css"
-    />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
     <title>Projects</title>
   </head>
   <body>
-    <ul id="bands"></ul>
+    <div class="photobooth">
+      <div class="controls">
+        <button onClick="takePhoto()">Take Photo</button>
+
+        <div class="rgb">
+          <label for="rmin">Red Min:</label>
+          <input type="range" min="0" max="255" name="rmin" />
+          <label for="rmax">Red Max:</label>
+          <input type="range" min="0" max="255" name="rmax" />
+
+          <br />
+
+          <label for="gmin">Green Min:</label>
+          <input type="range" min="0" max="255" name="gmin" />
+          <label for="gmax">Green Max:</label>
+          <input type="range" min="0" max="255" name="gmax" />
+
+          <br />
+
+          <label for="bmin">Blue Min:</label>
+          <input type="range" min="0" max="255" name="bmin" />
+          <label for="bmax">Blue Max:</label>
+          <input type="range" min="0" max="255" name="bmax" />
+        </div>
+      </div>
+
+      <canvas class="photo"></canvas> <video class="player"></video>
+      <div class="strip"></div>
+    </div>
+
+    <audio
+      class="snap"
+      src="http://wesbos.com/demos/photobooth/snap.mp3"
+      hidden
+    ></audio>
+
     <script src="./assets/javascript/app.js"></script>
   </body>
 </html>
