@@ -1,53 +1,80 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 body {
-  background: #1e2440;
-  color: #f2efe2;
-  font-size: 16px;
-  font-family: "Kaushan Script", cursive;
-  font-family: "Shadows Into Light", cursive;
+  min-height: 100vh;
+  margin: 0; /* Important! */
+  font-family: sans-serif;
+  /* background: linear-gradient(
+      45deg,
+      hsla(340, 100%, 55%, 1) 0%,
+      hsla(340, 100%, 55%, 0) 70%
+    ),
+    linear-gradient(
+      135deg,
+      hsla(225, 95%, 50%, 1) 10%,
+      hsla(225, 95%, 50%, 0) 80%
+    ),
+    linear-gradient(
+      225deg,
+      hsla(140, 90%, 50%, 1) 10%,
+      hsla(140, 90%, 50%, 0) 80%
+    ),
+    linear-gradient(
+      315deg,
+      hsla(35, 95%, 55%, 1) 100%,
+      hsla(35, 95%, 55%, 0) 70%
+    ); */
+  background-image: url("../images/alex-block-592982-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
-.container {
-  position: relative;
-  border: 1px solid #f2efe2;
-  width: 40vw;
-  max-width: 60vw;
+
+.wrapper {
   margin: 0 auto;
-  border-radius: 0.1rem;
-  background: #f2efe2;
-  padding: 0.2rem 1rem;
-  color: #1e2440;
-  overflow: scroll;
-  margin-top: 10vh;
+  max-width: 500px;
+  font-size: 20px;
+  line-height: 2;
+  position: relative;
 }
-.text-box {
-  max-height: 70vh;
-  overflow: scroll;
+
+a {
+  text-decoration: none;
+  color: black;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
 }
-.text-box:focus {
-  outline: none;
+
+.highlight {
+  transition: all 0.2s;
+  border-bottom: 2px solid white;
+  position: absolute;
+  top: 0;
+  background: white;
+  left: 0;
+  z-index: -1;
+  border-radius: 20px;
+  display: block;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-.text-box p {
-  border-bottom: 1px dotted black;
-  margin: 0px !important;
-}
-.fa {
-  color: white;
-  background: #1e2440;
-  border-radius: 50%;
-  cursor: pointer;
-  margin-top: 1rem;
-  float: right;
-  width: 2rem;
-  height: 2rem;
-  display: flex !important;
-  align-items: center;
+
+.menu {
+  padding: 0;
+  display: flex;
+  list-style: none;
   justify-content: center;
+  margin: 100px 0;
 }
-@media (max-width: 768px) {
-  .container {
-    width: 85vw;
-    max-width: 85vw;
-  }
-  .text-box {
-    max-height: 55vh;
-  }
+
+.menu a {
+  display: inline-block;
+  padding: 5px;
+  margin: 0 20px;
+  color: black;
 }
