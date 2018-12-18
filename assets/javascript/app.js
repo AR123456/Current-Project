@@ -1,38 +1,14 @@
-const msg = new SpeechSynthesisUtterance();
-let voices = [];
-const voicesDropdown = document.querySelector('[name="voice"]');
-const options = document.querySelectorAll('[type="range"], [name="text"]');
-const speakButton = document.querySelector("#speak");
-const stopButton = document.querySelector("#stop");
-msg.text = document.querySelector("[name='text']").value;
+const nav = document.querySelector("#main");
+const topOfNav = nav.offsetTop;
 
-function populateVoices() {
-  voices = this.getVoices();
-  voicesDropdown.innerHTML = voices
-
-    .map(
-      voice =>
-        `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`
-    )
-    .join("");
-}
-function setVoice() {
-  msg.voice = voices.find(voice => voice.name === this.value);
-  toggle();
-}
-function toggle(startOver = true) {
-  speechSynthesis.cancel();
-  if (startOver) {
-    speechSynthesis.speak(msg);
+function fixNav() {
+  if (window.scrollY >= topOfNav) {
+    document.body.paddingTop = nav.offsetHeight + "px";
+    document.body.classList.add("fixed-nav");
+  } else {
+    document.body.paddingTop = 0;
+    document.body.classList.remove("fixed-nav");
   }
 }
-function setOption() {
-  console.log(this.name, this.value);
-  msg[this.name] = this.value;
-  toggle();
-}
-speechSynthesis.addEventListener("voiceschanged", populateVoices);
-voicesDropdown.addEventListener("change", setVoice);
-options.forEach(option => option.addEventListener("change", setOption));
-speakButton.addEventListener("click", toggle);
-stopButton.addEventListener("click", () => toggle(false));
+
+window.addEventListener("scroll", fixNav);
