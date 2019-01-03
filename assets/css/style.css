@@ -1,72 +1,80 @@
 html {
   box-sizing: border-box;
-  background: #ffc600;
-  font-family: "helvetica neue";
-  font-size: 20px;
-  font-weight: 200;
 }
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
-input {
-  width: 100%;
-  padding: 20px;
+body {
+  min-height: 100vh;
+  margin: 0; /* Important! */
+  font-family: sans-serif;
+  /* background: linear-gradient(
+      45deg,
+      hsla(340, 100%, 55%, 1) 0%,
+      hsla(340, 100%, 55%, 0) 70%
+    ),
+    linear-gradient(
+      135deg,
+      hsla(225, 95%, 50%, 1) 10%,
+      hsla(225, 95%, 50%, 0) 80%
+    ),
+    linear-gradient(
+      225deg,
+      hsla(140, 90%, 50%, 1) 10%,
+      hsla(140, 90%, 50%, 0) 80%
+    ),
+    linear-gradient(
+      315deg,
+      hsla(35, 95%, 55%, 1) 100%,
+      hsla(35, 95%, 55%, 0) 70%
+    ); */
+  background-image: url("../images/alex-block-592982-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
-.search-form {
-  max-width: 400px;
-  margin: 50px auto;
-}
-
-input.search {
-  margin: 0;
-  text-align: center;
-  outline: 0;
-  border: 10px solid #f7f7f7;
-  width: 120%;
-  left: -10%;
+.wrapper {
+  margin: 0 auto;
+  max-width: 500px;
+  font-size: 20px;
+  line-height: 2;
   position: relative;
-  top: 10px;
-  z-index: 2;
-  border-radius: 5px;
-  font-size: 40px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
 }
 
-.suggestions {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  /*perspective:20px;*/
+a {
+  text-decoration: none;
+  color: black;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
 }
-.suggestions li {
+
+.highlight {
+  transition: all 0.2s;
+  border-bottom: 2px solid white;
+  position: absolute;
+  top: 0;
   background: white;
-  list-style: none;
-  border-bottom: 1px solid #d8d8d8;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
-  margin: 0;
-  padding: 20px;
-  transition: background 0.2s;
+  left: 0;
+  z-index: -1;
+  border-radius: 20px;
+  display: block;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.menu {
+  padding: 0;
   display: flex;
-  justify-content: space-between;
-  text-transform: capitalize;
+  list-style: none;
+  justify-content: center;
+  margin: 100px 0;
 }
 
-.suggestions li:nth-child(even) {
-  transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001);
-  background: linear-gradient(to bottom, #ffffff 0%, #efefef 100%);
-}
-.suggestions li:nth-child(odd) {
-  transform: perspective(100px) rotateX(-3deg) translateY(3px);
-  background: linear-gradient(to top, #ffffff 0%, #efefef 100%);
-}
-
-span.population {
-  font-size: 15px;
-}
-
-.hl {
-  background: #ffc600;
+.menu a {
+  display: inline-block;
+  padding: 5px;
+  margin: 0 20px;
+  color: black;
 }
