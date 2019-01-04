@@ -1,20 +1,14 @@
-const triggers = document.querySelectorAll("a");
-const highlight = document.createElement("span");
-highlight.classList.add("highlight");
-document.body.appendChild(highlight);
+const nav = document.querySelector("#main");
+const topOfNav = nav.offsetTop;
 
-function highlightLink() {
-  const linkCoords = this.getBoundingClientRect();
-  console.log(linkCoords);
-  const coords = {
-    width: linkCoords.width,
-    height: linkCoords.height,
-    top: linkCoords.top - window.scrollY,
-    left: linkCoords.left - window.scrollX
-  };
-  highlight.style.width = `${coords.width}px`;
-  highlight.style.height = `${coords.height}px`;
-  highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+function fixNav() {
+  if (window.scrollY >= topOfNav) {
+    document.body.paddingTop = nav.offsetHeight + "px";
+    document.body.classList.add("fixed-nav");
+  } else {
+    document.body.paddingTop = 0;
+    document.body.classList.remove("fixed-nav");
+  }
 }
 
-triggers.forEach(a => a.addEventListener("mouseenter", highlightLink));
+window.addEventListener("scroll", fixNav);
