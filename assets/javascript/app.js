@@ -1,14 +1,12 @@
-const nav = document.querySelector("#main");
-const topOfNav = nav.offsetTop;
+// on letter hover do the automation
+//use map and spread + query selector all to put each letter into a span tag
 
-function fixNav() {
-  if (window.scrollY >= topOfNav) {
-    document.body.paddingTop = nav.offsetHeight + "px";
-    document.body.classList.add("fixed-nav");
-  } else {
-    document.body.paddingTop = 0;
-    document.body.classList.remove("fixed-nav");
-  }
+//get the word Spreads out of the h2 of class jump
+const heading = document.querySelector(".jump");
+heading.innerHTML = spanWrap(heading.textContent);
+console.log(heading.innerHTML);
+//put each letter into a span tag
+function spanWrap(word) {
+  return [...word].map(letter => `<span>${letter}</span>`).join("");
 }
-
-window.addEventListener("scroll", fixNav);
+// use query selector all to apply the annimation to each when the mouse passes over it
