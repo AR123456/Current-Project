@@ -2,31 +2,83 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>D3 canvas globe with country hover</title>
-
-    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <title>Projects</title>
   </head>
-
   <body>
-    <h2>Spin the Globe Find Dinner</h2>
-    <h2 id="current"></h2>
-    <canvas id="globe"></canvas>
-    <!-- Using ajax to make API calls  -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
-    <!-- using  Data-Driven_Documents  https://d3js.org/  library API  -->
-    <!-- TODO look at the Data-Driven-Documents and do the Tutorial  -->
+    <h2>Full Stack Web Development and Design For Your Health</h2>
+    <nav class="top">
+      <div class="dropdownBackground"><span class="arrow"></span></div>
 
-    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
-    <script src="https://d3js.org/topojson.v2.min.js"></script>
-    <!-- This is a link to a code block from  https://bl.ocks.org/ look at putting this code into the JS vs this link  -->
-    <!-- link to the page that Mike Bostock authored called "World Tour" https://bl.ocks.org/mbostock/4183330 -->
-    <!-- the link to the code block in turn links out to more JS files on that site.  -->
-    <script src="./js/versor.js"></script>
-    <script src="https://cdn.jsdelivr.net/combine/npm/versor,npm/d3-inertia"></script>
-    <!-- https://bl.ocks.org/Fil/63366253a5d2f00640c15b096c29a38c -->
-    <!-- TODO Find out why the attached file is not working but the url above is  -->
-    <!-- <script src=".js/3d-inertia.js"></script> -->
-
-    <script src="js/index.js"></script>
+      <ul class="cool">
+        <li>
+          <a href="#">About Me</a>
+          <div class="dropdown dropdown1">
+            <div class="bio">
+              <img src="./assets/images/me.jpg" />
+              <p>Text about me</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="#">Portfolio</a>
+          <ul class="dropdown courses">
+            <li>
+              <span class="code">one</span>
+              <a href="#">one</a>
+            </li>
+            <li>
+              <span class="code">two</span> <a href="#">two</a>
+            </li>
+            <li>
+              <span class="code">three</span>
+              <a href="#">three</a>
+            </li>
+            <li>
+              <span class="code">four</span>
+              <a href="#">Four</a>
+            </li>
+            <li>
+              <span class="code">five</span>
+              <a href="#">Five</a>
+            </li>
+            <li>
+              <span class="code">six</span>
+              <a href=#">Six</a>
+            </li>
+            <li>
+              <span class="code">seven</span>
+              <a href="#">Seven </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Other Links</a>
+          <ul class="dropdown dropdown3">
+            <li>
+              <a class="button" href="#">GitHub</a>
+            </li>
+            <li>
+              <a class="button" href="#"
+                >Stack</a
+              >
+            </li>
+            <li><a class="button" href="#">Linked In</a></li>
+            <li>
+              <a class="button" href="#"
+                >Slack</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <script src="./assets/javascript/app.js"></script>
   </body>
 </html>
