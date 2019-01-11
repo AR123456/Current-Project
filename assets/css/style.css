@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+}
+h1 {
+  margin-top: 0;
+}
+div {
+  background-color: #e4f9f5;
+}
+span {
+}
+/* css box model div will expand to the height and width and pushes other content out of the way 
+a % of the viewport of screen size 
+can also specifiy a border or not 
+defalut if 3px and will not encroch over the space it surronds 
+so it acctualy adds to the width and height
+Padding adds space between text and inner edge of the boarder of the box
+ it also adds to size of box
+the margin is a buffer zone that adds space to the outside edge of the boarder 
+this is shown in the inspector tools  
+
+*/
+.top-container {
+  background-color: #e4f9f5;
+}
+.middle-container {
+  height: 200px;
+  width: 200px;
+  background-color: brown;
+}
+
+.bottom-container {
+  height: 200px;
+  width: 200px;
+  background-color: yellow;
+}
+/* Very cool css box model demoo http://markusvogl.com/web1/interactive_box_model/css_box_demo.html */
+/* css positioning web site http://www.brainjar.com/css/positioning/default.asp */
