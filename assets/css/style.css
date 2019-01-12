@@ -1,25 +1,29 @@
 body {
-  background-image: url("../images/happyBalloons.jpg");
+  /* background-image: url("../images/happyBalloons.jpg"); */
 }
 .red {
   background-color: red;
   width: 100px;
   height: 100px;
-  position: relative;
+  position: absolute;
   left: 200px;
+  top: 200px;
 }
 .blue {
   background-color: blue;
   width: 100px;
   height: 100px;
-  position: relative;
-  bottom: 100px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
 }
 .yellow {
   background-color: yellow;
   width: 100px;
   height: 100px;
-  position: relative;
-  left: 100px;
-  bottom: 200px;
 }
+
+/* absolute position  the element ( margin )  is positioned relative to its parent element body or another div
+it will affect document flow, it takes it out of the document flow 
+*/
+/*  The fixed position will keep the element in the same spot even with scolling.  Good for a navbar   */
