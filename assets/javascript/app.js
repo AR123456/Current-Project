@@ -1,19 +1,11 @@
-//use to control user input  cammel case , proxy ect
-
-const safeHandler = {
+//phone number handler 
+const phoneHandler = {
   set(target, name, value) {
-    const likeKey = Object.keys(target).find(k => k.toLowerCase() === name.toLowerCase());
-
-    if (!(name in target) && likeKey) {
-      throw new Error(
-        `Oops! Looks like like we already have a(n) ${name} property but with the case of ${likeKey}.`);
-    }
-    target[name] = value;
+    target[name] = value.match(/[0-9]/g).join("");
+  },
+  get(target, name) {
+    return target[name].replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
   }
-};
+}
 
-const safety = new Proxy({
-  id: 100
-}, safeHandler);
-
-safety.ID = 200;
+const phoneNumbers = new Proxy({}, phoneHandler);
