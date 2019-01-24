@@ -1,43 +1,19 @@
-// 
+//use to control user input  cammel case , proxy ect
 
-const person = {
-  name: "Anne",
-  age: 29
+const safeHandler = {
+  set(target, name, value) {
+    const likeKey = Object.keys(target).find(k => k.toLowerCase() === name.toLowerCase());
+
+    if (!(name in target) && likeKey) {
+      throw new Error(
+        `Oops! Looks like like we already have a(n) ${name} property but with the case of ${likeKey}.`);
+    }
+    target[name] = value;
+  }
 };
 
-//when getting name want to return something else 
-// proxy takes 2 things a object and a handler 
-//in handle specify all the oberations that need re writing  - this is called a trap
-//trap is between you and the object , 
-// const personProxy = new Proxy(person, {
-//   //this is the trap
-//   get(target, name) {
-//     console.log("Someone is asking for ", target, name);
-//     return " Nahhhhh"
-//   }
-// });
+const safety = new Proxy({
+  id: 100
+}, safeHandler);
 
-// can use this to modify or check to make sure something is meeting standars like to upper case 
-
-// const person = {
-//   name: "Anne",
-//   age: 29
-// };
-
-//when getting name want to return something else 
-// proxy takes 2 things a object and a handler 
-//in handle specify all the oberations that need re writing  - this is called a trap
-//trap is between you and the object , 
-const personProxy = new Proxy(person, {
-  //this is the trap
-  get(target, name) {
-    return target[name].toUpperCase();
-  },
-  //could use set to remove white space
-  set(target, name, value) {
-    if (typeof value === "string") {
-      target[name] = value.trim().toUpperCase() + "Gone";
-
-    }
-  }
-});
+safety.ID = 200;
