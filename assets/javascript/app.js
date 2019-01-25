@@ -1,12 +1,17 @@
-let dog1 = { name: "Pixie", age: 3 };
-let dog2 = { name: "Sunny", age: 1 };
-
-const weakSauce = new WeakSet([dog1, dog2]);
-
-console.log(weakSauce);
-// a weak set has no .clear method ,they clean themselfs up - garbage collection in memory.  When the ref to the dog is removed it will automatically be removed from the set
-
-// may need to wait a couple of seconds
-dog1 = null;
-
-console.log(weakSauce);
+const brunch = new Set();
+//as people start coming in
+brunch.add("Judy");
+brunch.add("Peggy");
+brunch.add("Rosie");
+// ready to open,
+const line = brunch.values();
+//when you call next against the line it removes itself from the set iterator
+console.log(line.next().value);
+console.log(line.next().value);
+// add to the inital set ( not adding to line here)
+//can still add to original and the iterator will iterate on them
+brunch.add("Steve");
+brunch.add("Tom");
+console.log(line.next().value);
+console.log(line.next().value);
+console.log(line.next().value);
