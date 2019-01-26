@@ -1,17 +1,11 @@
-const brunch = new Set();
-//as people start coming in
-brunch.add("Judy");
-brunch.add("Peggy");
-brunch.add("Rosie");
-// ready to open,
-const line = brunch.values();
-//when you call next against the line it removes itself from the set iterator
-console.log(line.next().value);
-console.log(line.next().value);
-// add to the inital set ( not adding to line here)
-//can still add to original and the iterator will iterate on them
-brunch.add("Steve");
-brunch.add("Tom");
-console.log(line.next().value);
-console.log(line.next().value);
-console.log(line.next().value);
+const dogs = new Map();
+
+dogs.set("Pixie", 8);
+dogs.set("Brandy", 5);
+dogs.set("Sugar", 10);
+
+dogs.forEach((val, key) => console.log(val, key));
+
+for (const [dog] of dogs) {
+  console.log(dog);
+}
