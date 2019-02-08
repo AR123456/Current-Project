@@ -1,51 +1,20 @@
-// use while for state
-// while(someting is true){
-//   do something
-// }
-// use for to iterate
-// for (let i = 0; i < array.length; i++) {
-//   do something
+//Love Calculator
+prompt("What is your name ? ");
+prompt("What is the name of your hearts desire ? ");
+function LoveNum() {
+  // var n = Math.random();
 
-// }
+  // n = Math.floor(n * 100) + 1;
 
-//Fizz Buzz
-// Write a program that prints the numbers from 1 to 100  but for multiples of three print "Fizz" instead of the number and for the multiples of five print "buzz". For numbers which are multiples of both three and five print "FizzBuzz"
-let fizzBuzzy = function() {
-  let num = [];
-  for (let i = 1; num.length < 101; i++) {
-    if (i % 3 === 0 && i % 5 === 0) {
-      num.push(" fizz buzz");
-    } else if (i % 3 === 0) {
-      num.push("fizz");
-    } else if (i % 5 === 0) {
-      num.push("buzz");
-    } else {
-      num.push(i);
-    }
+  var n = Math.floor(Math.random() * 100 + 1);
+  if (n > 70) {
+    alert("Your love score is:  " + n + "% the perfect love");
   }
-
-  console.log(num);
-};
-fizzBuzzy();
-
-// another fiz buzz  using  while
-
-var output = [];
-var count = 1;
-
-function fizzBuzz() {
-  while (count <= 100) {
-    if (count % 3 === 0 && count % 5 === 0) {
-      output.push("FizzBuzz");
-    } else if (count % 3 === 0) {
-      output.push("Fizz");
-    } else if (count % 5 === 0) {
-      output.push("Buzz");
-    } else {
-      output.push(count);
-    }
-    count++;
+  if (n < 70 && n > 30) {
+    alert("Your love score is:  " + n + "% that is an average love");
   }
-  console.log(output);
+  if (n < 30) {
+    alert("Your love score is:  " + n + "% keep looking !");
+  }
 }
-fizzBuzz();
+LoveNum();
