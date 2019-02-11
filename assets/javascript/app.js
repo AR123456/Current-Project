@@ -1,20 +1,32 @@
-function bmiCalc(k, m) {
-  bmi = k / (m ^ 2);
-  console.log(bmi);
-  if (bmi < 18.5) {
-    return "Underweight";
-  }
-  if (bmi >= 18.5 && bmi <= 24.9) {
-    return "Nomral ";
-  }
-  if (bmi > 24.99 && bmi <= 29.9) {
-    return "Overweight";
-  }
-  if (bmi > 29.99 && bmi <= 34.9) {
-    return "Obese";
-  }
-  if (bmi > 34.9) {
-    return "Extremly Obese";
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var cw = canvas.width;
+var ch = canvas.height;
+
+// define your barchart as a data-array of javascript objects
+var bars = [
+  { x: 50, y: ch, width: 20, height: 125, color: "green" },
+  { x: 80, y: ch, width: 20, height: 80, color: "red" },
+  { x: 110, y: ch, width: 20, height: 225, color: "blue" }
+];
+
+// draw the barchart based on the data array
+drawBars();
+
+function drawBars() {
+  ctx.textAlign = "center";
+  ctx.textBaseline = "bottom";
+  ctx.font = "14px verdana";
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, cw, ch);
+  for (var i = 0; i < bars.length; i++) {
+    var bar = bars[i];
+    ctx.fillStyle = bar.color;
+    ctx.fillRect(bar.x, bar.y - 20, bar.width, -bar.height);
+    ctx.fill();
+    ctx.strokeStyle = "lightgray";
+    ctx.strokeRect(bar.x, bar.y - 20, bar.width, -bar.height);
+    ctx.fillStyle = "white";
+    ctx.fillText(bar.height, bar.x + bar.width / 2, ch - 3);
   }
 }
-bmiCalc(78, 1.5);

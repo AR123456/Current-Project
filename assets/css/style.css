@@ -1,25 +1,7 @@
 body {
-  background-image: url("../images/happyBalloons.jpg");
+  background-color: white;
 }
-.red {
-  background-color: red;
-  width: 100px;
-  height: 100px;
-  position: relative;
-  left: 200px;
-}
-.blue {
-  background-color: blue;
-  width: 100px;
-  height: 100px;
-  position: relative;
-  bottom: 100px;
-}
-.yellow {
-  background-color: yellow;
-  width: 100px;
-  height: 100px;
-  position: relative;
-  left: 100px;
-  bottom: 200px;
+#canvas {
+  border: 1px solid red;
+  margin: 0 auto;
 }
