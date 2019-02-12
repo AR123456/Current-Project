@@ -1,58 +1,36 @@
-// === Set up canvas === //
+import { timingSafeEqual } from "crypto";
 
+// the container for the canvas
 var width = 750,
   height = 400;
-
-var data = [];
-var value = 5000;
-var colourScale;
-
 var canvas = d3
   .select("#container")
   .append("canvas")
   .attr("width", width)
   .attr("height", height);
-
+// add the context which is the object carrying all the properties and methods
 var context = canvas.node().getContext("2d");
-
-// === Load and prepare the data === //
-
-d3.range(value).forEach(function(el) {
-  data.push({ value: el });
-});
-
-console.log(data);
-
-// === Bind data to custom elements === //
-
+// This is your SVG replacement and the parent of all other elements
 var customBase = document.createElement("custom");
-var custom = d3.select(customBase); // this is our svg replacement
-
-// settings for a grid with 40 cells in a row and 2x5 cells in a group
+var custom = d3.select(customBase);
+// Settings for a grid with 10 cells in a row,
+// 100 cells in a block and 1000 cells in a row.
 var groupSpacing = 4;
 var cellSpacing = 2;
+var offsetTop = height / 5;
 var cellSize = Math.floor((width - 11 * groupSpacing) / 100) - cellSpacing;
 
-// === First call === //
-
-databind(data); // ...then update the databind function
-
-var t = d3.timer(function(elapsed) {
-  draw();
-  if (elapsed > 300) t.stop();
-}); // start a timer that runs the draw function for 500 ms (this needs to be higher than the transition in the databind function)
-
-// === Bind and draw functions === //
-
+// The Javascript structure  On a top level you only need 2 functions: databind(data) and draw()
 function databind(data) {
+  // Bind data to custom elements.
+  // Get a scale for the colours - not essential but nice.
   colourScale = d3.scaleSequential(d3.interpolateSpectral).domain(
     d3.extent(data, function(d) {
-      return d.value;
+      return d;
     })
   );
-
   var join = custom.selectAll("custom.rect").data(data);
-
+  // custom elements
   var enterSel = join
     .enter()
     .append("custom")
@@ -60,7 +38,7 @@ function databind(data) {
     .attr("x", function(d, i) {
       var x0 = Math.floor(i / 100) % 10,
         x1 = Math.floor(i % 10);
-      return groupSpacing * x0 + (cellSpacing + cellSize) * (x1 + x0 * 10);
+      return groupSpacing * x0 + (cellspacing + cellSize) * (x1 + x0 * 10);
     })
     .attr("y", function(d, i) {
       var y0 = Math.floor(i / 1000),
@@ -76,7 +54,7 @@ function databind(data) {
     .attr("width", cellSize)
     .attr("height", cellSize)
     .attr("fillStyle", function(d) {
-      return colourScale(d.value);
+      return colourScale(d);
     });
 
   var exitSel = join
@@ -85,23 +63,13 @@ function databind(data) {
     .attr("width", 0)
     .attr("height", 0)
     .remove();
-} // databind()
-
-// === Draw canvas === //
+}
 
 function draw() {
-  // clear canvas
-
-  context.fillStyle = "#fff";
-  context.fillRect(0, 0, width, height);
-
-  // draw each individual custom element with their properties
-
-  var elements = custom.selectAll("custom.rect"); // this is the same as the join variable, but used here to draw
-
+  // Draw the elements on the canvas.
+  context.clearRect(0, 0, width, height);
+  var elements = custom.selectAll("custom.rect");
   elements.each(function(d, i) {
-    // for each virtual/custom element...
-
     var node = d3.select(this);
     context.fillStyle = node.attr("fillStyle");
     context.fillRect(
@@ -111,33 +79,27 @@ function draw() {
       node.attr("height")
     );
   });
-} // draw()
+}
 
-// === Listeners/handlers === //
+databind(d3.range(value));
+var t = d3.timer(function(elapsed) {
+  draw();
+  if (elapsed > 300) t.stop();
+});
 
 d3.select("#text-input").on("keydown", function() {
   if (d3.event.keyCode === 13) {
-    d3.select("#alert").html("");
-
-    if (+this.value < 1 || +this.value > 10000) {
+    if ((+this.value < 1 || +this.value > 10, 000)) {
       d3.select("#text-explain").classed("alert", true);
-
       return;
     } else {
       d3.select("#text-explain").classed("alert", false);
-
-      data = [];
-
-      d3.range(+this.value).forEach(function(el) {
-        data.push({ value: el });
-      });
-
-      databind(data);
-
+      value = +this.value;
+      databind(d3.range(vaule));
       var t = d3.timer(function(elapsed) {
         draw();
-        if (elapsed > 500) t.stop();
-      }); // start a timer that runs the draw function for 500 ms (this needs to be higher than the transition in the databind function)
-    } // value test
-  } // keyCode 13 === return
-}); // text input listener/handler
+        if (elapsed > 300) t.stop;
+      });
+    }
+  }
+});
