@@ -1,54 +1,20 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Javascript Math Game</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-
-    <!-- link to local style sheet -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Data Hierarchy</title>
+    <style>
+      text {
+        font-family: Arial;
+      }
+    </style>
   </head>
-
   <body>
-    <!--  create page layout   -->
-    <div id="container">
-      <div id="score">Score: <span id="scorevalue">0</span></div>
-      <div id="correct">
-        Correct
-      </div>
-      <div id="wrong">
-        Try again
-      </div>
-      <div id="question"></div>
-      <div id="instruction">
-        Click on the correct answer
-      </div>
-      <div id="choices">
-        <div id="box1" class="box"></div>
-        <div id="box2" class="box"></div>
-        <div id="box3" class="box"></div>
-        <div id="box4" class="box"></div>
-      </div>
-      <div id="startreset">
-        Start Game
-      </div>
-      <div id="timeremaining">
-        Time remaining: <span id="timeremainingvalue">60</span> sec
-      </div>
-      <div id="gameOver"></div>
-    </div>
+    <h3>News Items</h3>
+    <div class="canvas"></div>
 
-    <!-- if you do not put the jquery at the end of the html you need to include the document ready code  -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <!-- local external js file  -->
-    <script src="./assets/javascript/app.js"></script>
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
