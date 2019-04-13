@@ -1,20 +1,31 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Data Hierarchy</title>
-    <style>
-      text {
-        font-family: Arial;
-      }
-    </style>
+    <title>
+     Page Loading Spinner
+    </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400"
+      rel="stylesheet"
+    />
+    <!-- link to local style sheet -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
   <body>
-    <h3>News Items</h3>
-    <div class="canvas"></div>
+    <div class="container">
+      <h1>This page is loading...</h1>
+      <div class="loader"></div>
+      <h2>..and it never stops</h2>
+    </div>
+    <!-- if you do not put the jquery at the end of the html you need to include the document ready code  -->
 
-    <script src="https://d3js.org/d3.v5.js"></script>
-    <script src="index.js"></script>
+    <!-- local external js file  -->
+    <script src="./assets/javascript/app.js"></script>
   </body>
 </html>
