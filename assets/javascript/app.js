@@ -1,66 +1,24 @@
 // making sure window loads before the canvas starts
 window.onload = function() {
-  // a simple line
-  var canvas = document.getElementById("hello-world-canvas");
-  var ctx = canvas.getContext("2d");
+  // Definitions
+  var canvas = document.getElementById("chessboard-canvas");
+  var context = canvas.getContext("2d");
+  // Colors
+  var lightCellColor = "#ddb180";
+  var darkCellColor = "#7c330c";
 
-  ctx.beginPath();
-  ctx.lineWidth = 20;
-  ctx.strokeStyle = "green";
-  ctx.lineJoin = "round";
-  ctx.shadowColor = "grey";
-  ctx.shadowOffsetX = 15;
-  ctx.shadowOffsetY = 15;
-  ctx.shadowBlur = 5;
-  ctx.moveTo(30, 30);
-  ctx.lineTo(130, 30);
-  // ctx.lineTo(130, 130);
-  // ctx.lineTo(30, 130);
-  // ctx.lineTo(30, 230);
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.lineWidth = 20;
-  ctx.strokeStyle = "red";
-  ctx.lineJoin = "round";
-  ctx.shadowColor = "grey";
-  ctx.shadowOffsetX = -15;
-  ctx.shadowOffsetY = 15;
-  ctx.shadowBlur = 5;
-  ctx.moveTo(60, 60);
-  ctx.lineTo(160, 60);
-  // ctx.lineTo(160, 160);
-  // ctx.lineTo(60, 160);
-  // ctx.lineTo(60, 260);
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.lineWidth = 20;
-  ctx.strokeStyle = "blue";
-  ctx.lineJoin = "round";
-  ctx.shadowColor = "grey";
-  ctx.shadowOffsetX = -15;
-  ctx.shadowOffsetY = 15;
-  ctx.shadowBlur = 5;
-  ctx.moveTo(90, 90);
-  ctx.lineTo(190, 90);
-  // ctx.lineTo(190, 190);
-  // ctx.lineTo(90, 190);
-  // ctx.lineTo(90, 290);
-  ctx.stroke();
-
-  ctx.beginPath();
-  ctx.lineWidth = 20;
-  ctx.strokeStyle = "yellow";
-  ctx.lineJoin = "round";
-  ctx.shadowColor = "grey";
-  ctx.shadowOffsetX = -15;
-  ctx.shadowOffsetY = -15;
-  ctx.shadowBlur = 5;
-  ctx.moveTo(110, 110);
-  ctx.lineTo(220, 110);
-  // ctx.lineTo(220, 220);
-  // ctx.lineTo(110, 220);
-  // ctx.lineTo(110, 320);
-  ctx.stroke();
+  // Frame
+  context.strokeStyle = "black";
+  context.strokeRect(250, 100, 400, 400);
+  // using a double for loop
+  for (let x = 1; x <= 8; x++) {
+    for (let y = 1; y <= 8; y++) {
+      if ((x + y) % 2 === 0) {
+        context.fillStyle = darkCellColor;
+      } else {
+        context.fillStyle = lightCellColor;
+      }
+      context.fillRect(200 + x * 50, 50 + y * 50, 50, 50);
+    }
+  }
 };
