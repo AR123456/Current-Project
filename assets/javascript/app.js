@@ -1,15 +1,17 @@
-// //////////// using findIndex//////////////////
-var arr = [1, 9, 4, 7, 6, 5, 8, 10, 2, 3];
+//countDown function
+// accept time in seconds
+//print time remaining every second
+// when at 0 time print ring  ring rng
 
-// findIndex(arr, function(num, index, array) {
-//   return num === 6;
-// });
-//resulte returned is  4  since 6 is in the 4th position in the array
-
-// findIndex(arr, function(num, index, array) {
-//   return num % 2 === 0;
-// });
-//  / result of finding position of numbers in the array that are divisible by 2
-//2, or the first even number
-
-console.log(arr.indexOf(7));
+function countDown(seconds) {
+  var intervalId = setInterval(function() {
+    seconds--;
+    if (seconds > 0) {
+      console.log("Timer:", seconds);
+    } else {
+      console.log("Ring Ring Ring!!!");
+      clearInterval(intervalId);
+    }
+  }, 1000);
+}
+countDown(30);
