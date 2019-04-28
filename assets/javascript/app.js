@@ -1,25 +1,15 @@
-// Promise example
-// var p1 = new Promise(function(resolve, reject) {
-//   var num = Math.random();
-//   if (num < 0.5) {
-//     resolve(num);
-//   } else {
-//     reject(num);
-//   }
-// });
-// p1.then(function(result) {
-//   console.log("Success: ", result);
-// }).catch(function(error) {
-//   console.log("Error: ", error);
-// });
+// making sure window loads before the canvas starts
+window.onload = function() {
+  // paramiters
 
-//Promise with asyncromis code
-var promise = new Promise(function(resolve, reject) {
-  setTimeout(function() {
-    var randomInt = Math.floor(Math.random() * 10);
-    resolve(randomInt);
-  }, 4000);
-});
-promise.then(function(data) {
-  console.log("Random init passed to resolve: ", data);
-});
+  // quadraticCurveTo(controlX,controly, endX, endY)
+
+  var canvas = document.getElementById("lab-complex-shapes-canvas");
+  var ctx = canvas.getContext("2d");
+  ctx.beginPath();
+  ctx.strokeStyle = "red";
+  ctx.lineWidth = 10;
+  ctx.moveTo(200, 250);
+  ctx.quadraticCurveTo(100, 110, 400, 250);
+  ctx.stroke();
+};
