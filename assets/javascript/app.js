@@ -1,15 +1,19 @@
-// making sure window loads before the canvas starts
-window.onload = function() {
-  // paramiters
+var btn = document.querySelector("#btn");
+var priceDisp = document.querySelector("#price");
+//listen for clicks
+btn.onclick = function() {
+  var XHR = new XMLHttpRequest();
+  XHR.onreadystatechange = function() {
+    if (XHR.readyState == 4 && XHR.status == 200) {
+      // var url = JSON.parse(XHR.responseText).message;
+      // var price = (document.getElementById("#price").innerHTML =
+      //   XHR.message.bpi.usd.rate_float);
+      var data = JSON.parse(XHR.responseText);
+      var price = data.bpi.USD.rate_float;
+      priceDisp.innerText = price;
+    }
+  };
 
-  // quadraticCurveTo(controlX,controly, endX, endY)
-
-  var canvas = document.getElementById("lab-complex-shapes-canvas");
-  var ctx = canvas.getContext("2d");
-  ctx.beginPath();
-  ctx.strokeStyle = "red";
-  ctx.lineWidth = 10;
-  ctx.moveTo(200, 250);
-  ctx.quadraticCurveTo(100, 110, 400, 250);
-  ctx.stroke();
+  XHR.open("GET", "https://api.coindesk.com/v1/bpi/currentprice.json");
+  XHR.send();
 };
