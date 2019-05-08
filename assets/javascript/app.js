@@ -1,55 +1,43 @@
-// variables
-let user = "";
-let computer = "";
-let win = 0;
-let loss = 0;
-let tie = 0;
+var btn = document.querySelector("button");
+var fullnameDisp = document.querySelector("#fullname");
+var avatar = document.querySelector("#avatar");
+var username = document.querySelector("#username");
+var email = document.querySelector("#email");
+var city = document.querySelector("#city");
+btn.addEventListener("click", function() {
+  var url = "https://randomuser.me/api/";
+  fetch(url)
+    .then(handleErrors)
+    .then(parseJSON)
+    .then(updateProfile)
+    //putting catch into a function
+    .catch(displayErrors);
+});
+// the handle errors function
+function handleErrors(res) {
+  if (!res.ok) {
+    throw Error(res.status);
+  }
+  return res;
+}
 
-document.onkeyup = function(event) {
-  user = event.key;
-  console.log(user);
-  var chars = "rps";
-  var string_length = 1;
-  var computer = "";
-  for (var i = 0; i < string_length; i++) {
-    var rnum = Math.floor(Math.random() * chars.length);
-    computer += chars.substring(rnum, rnum + 1);
-  }
-  if (user === "r" || user === "p" || user === "s") {
-    console.log("you choose:", user);
-    document.getElementById("user").value = user;
-    console.log("computer chooses: ", computer);
-    document.getElementById("computer").value = computer;
-    if (user === computer) {
-      tie++;
-      console.log("tie number: ", tie);
-      document.getElementById("tie").value = tie;
-    }
-    if (user === "r" && computer === "p") {
-      // rock losses
-      loss++;
-      document.getElementById("loss").value = loss;
-    }
-    if (user === "p" && computer === "s") {
-      // papaer loses
-      loss++;
-      document.getElementById("loss").value = loss;
-    }
-    if (user === "s" && computer === "p") {
-      win++;
-      document.getElementById("win").value = win;
-    }
-    if (user === "r" && computer === "s") {
-      win++;
-      document.getElementById("win").value = win;
-    }
-    if (user === "p" && computer === "r") {
-      win++;
-      document.getElementById("win").value = win;
-    }
-    if (user === "s" && computer === "r") {
-      loss++;
-      document.getElementById("loss").value = loss;
-    }
-  }
-};
+//putting the rse.json in to a function to make things DRY
+function parseJSON(res) {
+  return res.json().then(function(parseData) {
+    return parseData.results[0];
+  });
+}
+// putting updating the dom into a variabple
+function updateProfile(data) {
+  var fullname = data.name.first + " " + data.name.last;
+  fullnameDisp.innerText = fullname;
+  avatar.src = data.picture.medium;
+  username.innerText = data.login.username;
+  email.innerText = data.email;
+  city.innerText = data.location.city;
+}
+/// putting the catch into a function
+function displayErrors(err) {
+  console.log("inside displayErrors");
+  console.log(err);
+}

@@ -1,53 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>
+      Ajax - Fetch
+    </title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
-    <!-- Bootstrap CSS -->
     <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-      crossorigin="anonymous"
     />
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
+    <!-- link to local style sheet -->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <title>Simple Rock Paper Scissors Game</title>
   </head>
-
   <body>
-    <div id="game">
-      Press r, p or s to start the game
-
-      <div >You choose: <input type="text" id="user" value=""></div>
-      <div >The computer chooses:<input type="text" id="computer" value=""></div>
-      <div  >wins: <input type="text" id="win" value=""></div>
-      <div>losses: <input type="text" id="loss" value=""></div> </div>
-      <div >ties:<input type="text" id="tie" value="">  </div>
+    <h1 class="title">Random User Generator</h1>
+    <div class="user-profile">
+      <img
+        id="avatar"
+        src="https://pbs.twimg.com/profile_images/743138182607175680/ZJzktgBk_400x400.jpg"
+      />
+      <div id="fullname">Jon Snow</div>
+      <div id="username">
+        kingofnorth
+      </div>
+      <div class="description">
+        <div>Email: <span id="email">jon@hotmail.com</span></div>
+        <div>City: <span id="city">Winterfell</span></div>
+      </div>
+      <div class="footer">
+        <button id="btn">Next User!</button>
+      </div>
     </div>
+    <!-- if you do not put the jquery at the end of the html you need to include the document ready code  -->
 
-    <!-- local js file  -->
+    <!-- local external js file  -->
     <script src="./assets/javascript/app.js"></script>
   </body>
 </html>
