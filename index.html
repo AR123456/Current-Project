@@ -1,44 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>
-      Ajax - Fetch
-    </title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+
+    <!-- Bootstrap CSS -->
+
     <link
-      href="https://fonts.googleapis.com/css?family=Lato:300,400"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
       rel="stylesheet"
     />
-    <!-- link to local style sheet -->
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <title>D3 WHO Dashboard</title>
   </head>
-  <body>
-    <h1 class="title">Random User Generator</h1>
-    <div class="user-profile">
-      <img
-        id="avatar"
-        src="https://pbs.twimg.com/profile_images/743138182607175680/ZJzktgBk_400x400.jpg"
+  <div id="nav">
+    <h2>Healthy Life Expectancy and BMI Dashboard</h2>
+    <p>
+      Slide to change year :
+      <span id="year-val"></span>
+      <input id="year" type="range" step="2" />
+    </p>
+    <p>
+      Choose between healthy life expectancy and BMI.
+      <input
+        type="radio"
+        name="data-type"
+        value="healthyLifeExpectancy"
+        checked
       />
-      <div id="fullname">Jon Snow</div>
-      <div id="username">
-        kingofnorth
-      </div>
-      <div class="description">
-        <div>Email: <span id="email">jon@hotmail.com</span></div>
-        <div>City: <span id="city">Winterfell</span></div>
-      </div>
-      <div class="footer">
-        <button id="btn">Next User!</button>
-      </div>
+      <label>Healthy Life Expectancy</label>
+      <input type="radio" name="data-type" value="bodyMassIndex" />
+      <label>Body Mass Index</label>
+    </p>
+    <p>Click on a country to see its trends by year.</p>
+  </div>
+  <section class="container">
+    <div class="chart-container">
+      <svg
+        version="1.1"
+        baseProfile="full"
+        xmlns="http://www.w3.org/2000/svg"
+        id="map"
+      ></svg>
     </div>
-    <!-- if you do not put the jquery at the end of the html you need to include the document ready code  -->
+    <div class="chart-container right">
+      <svg
+        version="1.1"
+        baseProfile="full"
+        xmlns="http://www.w3.org/2000/svg"
+        id="pie"
+      ></svg>
+      <svg
+        version="1.1"
+        baseProfile="full"
+        xmlns="http://www.w3.org/2000/svg"
+        id="bar"
+      ></svg>
+    </div>
+  </section>
+  <div class="tooltip"></div>
+  <body>
+    <!--  d3 script tag -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <!-- local js file  -->
+    <script src="https://unpkg.com/topojson@3"></script>
 
-    <!-- local external js file  -->
+    <script src="./assets/javascript/pie.js"></script>
+    <script src="./assets/javascript/bar.js"></script>
+    <script src="./assets/javascript/map.js"></script>
+
     <script src="./assets/javascript/app.js"></script>
   </body>
 </html>
