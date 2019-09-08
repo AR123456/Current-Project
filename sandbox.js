@@ -1,13 +1,15 @@
-// return statements
+const name = 'shaun';
 
-// const speak = function(name, time){
-//   console.log(`good ${time}, ${name}!`);
-// };
+// function
 
-const calcArea = function(radius){
-  let area = 3.14 * radius**2;
-  return area;
-}
+const greet = () => {
+  return 'hello';
+};
 
-const area = calcArea(5);
-console.log('area is:', area);
+let resultOne = greet();
+console.log(resultOne);
+
+// method
+
+let resultTwo = name.toUpperCase();
+console.log(resultTwo);
