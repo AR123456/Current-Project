@@ -1,14 +1,9 @@
-// function declaration - are hoisted to top so can be delared anywhere even before delcared
-function greet() {
-  console.log("hello there");
-}
+// arguments & parameters
 
-// function expression - are not hoised , must be declared before run 
-const speak = function() {
-  console.log("good day!");
+const speak = function(name = 'luigi', time = 'night'){
+  console.log(`good ${time}, ${name}!`);
 };
 
-// greet();
-// greet();
-
-speak();
+// speak('mario', 'morning');
+// speak();
+speak('shaun');
