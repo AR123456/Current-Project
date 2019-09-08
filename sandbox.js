@@ -1,24 +1,14 @@
-// template strings
-const title = "Best reads of 2019";
-const author = "Mario";
-const likes = 30;
+// function declaration - are hoisted to top so can be delared anywhere even before delcared
+function greet() {
+  console.log("hello there");
+}
 
-// concatenation way
+// function expression - are not hoised , must be declared before run 
+const speak = function() {
+  console.log("good day!");
+};
 
-let resultB =
-  "The blog called " + title + " by " + author + " has " + likes + " likes";
-console.log(resultB);
+// greet();
+// greet();
 
-// template string way
-
-let result = `The blog called ${title} by ${author} has ${likes} likes`;
-console.log(result);
-
-// creating html templates
-let html = `
-  <h2>${title}</h2>
-  <p>By ${author}</p>
-  <span>This blog has ${likes} likes</span>
-`;
-
-console.log(html);
+speak();
