@@ -6,26 +6,21 @@ let user = {
   email: "crystal@thenetninja.co.uk",
   location: "berlin",
   blogs: ["why mac & cheese rules", "10 things to make with marmite"],
-  // attach method to this object
-  // methods - doing things the key is what we want to do, (login) and the value is doing it the function
-  // name and what it does
-  login: function() {
+  login() {
     console.log("the user logged in");
   },
-  logout: function() {
+  logout() {
     console.log("the user logged out");
   },
-  logBlogs: function() {
+  logBlogs() {
     // access the blogs here
-    console.log(user.blogs);
+    // console.log(this);
+    console.log("this user has written these blogs:");
+    this.blogs.forEach(blog => {
+      console.log(blog);
+    });
   }
 };
 
-//call the methods defined above
-user.login();
-user.logout();
+// console.log(this);
 user.logBlogs();
-
-const name = "shaun";
-name.toUpperCase();
-// Method  :  a function defined on an object
