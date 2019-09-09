@@ -1,19 +1,20 @@
-// Math object
+// Primitive and Reference Types - differ as to how they are used and stored in memory
 
-console.log(Math);
-console.log(Math.PI);
-console.log(Math.E);
+// primitive values- are stored on the stack which is fast but has limited space
+// stuff on stack can just be a pointer to the heap
 
-const area = 7.7;
+let scoreOne = 50;
+let scoreTwo = scoreOne;
+console.log(`scoreOne: ${scoreOne}`, `scoreTwo: ${scoreTwo}`);
 
-console.log(Math.round(area));
-console.log(Math.floor(area));
-console.log(Math.ceil(area));
-console.log(Math.trunc(area));
+scoreOne = 100;
+console.log(`scoreOne: ${scoreOne}`, `scoreTwo: ${scoreTwo}`);
 
-// random numbers
+// reference values - stored in the heap not the stack- the heap has more space but is slower than the stack
 
-const random = Math.random();
+userOne = { name: "ryu", age: 30 };
+userTwo = userOne;
+console.log(userOne, userTwo);
 
-console.log(random);
-console.log(Math.round(random * 100));
+userOne.name = "chun-li";
+console.log(userOne, userTwo);
