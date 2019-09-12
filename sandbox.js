@@ -1,20 +1,18 @@
-// Primitive and Reference Types - differ as to how they are used and stored in memory
+// const para = document.querySelector("p");
+// // const para = document.querySelector('.error');
+const para = document.querySelector("div.error");
 
-// primitive values- are stored on the stack which is fast but has limited space
-// stuff on stack can just be a pointer to the heap
+console.log(para);
 
-let scoreOne = 50;
-let scoreTwo = scoreOne;
-console.log(`scoreOne: ${scoreOne}`, `scoreTwo: ${scoreTwo}`);
+// query multiple elements at once
+// this resutls in a node list that looks a log like an array but is not
 
-scoreOne = 100;
-console.log(`scoreOne: ${scoreOne}`, `scoreTwo: ${scoreTwo}`);
-
-// reference values - stored in the heap not the stack- the heap has more space but is slower than the stack
-
-userOne = { name: "ryu", age: 30 };
-userTwo = userOne;
-console.log(userOne, userTwo);
-
-userOne.name = "chun-li";
-console.log(userOne, userTwo);
+const paras = document.querySelectorAll("p");
+const errors = document.querySelectorAll(".error");
+// but can use [] notation and for each to get
+console.log(paras, errors);
+console.log(paras[1], errors[0]);
+console.log("*****************************************");
+paras.forEach(para => {
+  console.log(para);
+});
