@@ -1,14 +1,27 @@
-// get an element by ID
-const title = document.getElementById("page-title");
-console.log(title);
+// const para = document.querySelector("p");
+// this is a property , not a method
+// console.log(para.innerText);
+// this changes it on the page !
+// para.innerText = "ninjas are awesome";
+// console.log(para.innerText);
+// to append to the page
+// para.innerText += " ninjas are awesome";
 
-// get elements by their class name
-// this results in an HTML collection - can use [] to get position but  cannot use forEach on an HTML collection becuase it is not a function  HTML collection is similare to a node list.
-const errors = document.getElementsByClassName("error");
-console.log(errors);
-console.log(errors[0]);
+const paras = document.querySelectorAll("p");
+//cycle through the node list
+// pass the item we are cycling through into the call back function, can name it whatever in this case Sean is calling it  p
+// paras.forEach(p => {
+//   console.log(p.innerText);
+//   p.innerText += "new text!";
+// });
 
-// get elements by their tag name
-const paras = document.getElementsByTagName("p");
-console.log(paras);
-console.log(paras[1]);
+const content = document.querySelector(".content");
+
+// //************************************* */
+// outputting an html template for each item in the array.  could have gotten this from a database
+
+const people = ["mario", "luigi", "yoshi"];
+
+people.forEach(person => {
+  content.innerHTML += `<p>${person}</p>`;
+});
