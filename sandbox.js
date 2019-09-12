@@ -1,18 +1,14 @@
-// const para = document.querySelector("p");
-// // const para = document.querySelector('.error');
-const para = document.querySelector("div.error");
+// get an element by ID
+const title = document.getElementById("page-title");
+console.log(title);
 
-console.log(para);
+// get elements by their class name
+// this results in an HTML collection - can use [] to get position but  cannot use forEach on an HTML collection becuase it is not a function  HTML collection is similare to a node list.
+const errors = document.getElementsByClassName("error");
+console.log(errors);
+console.log(errors[0]);
 
-// query multiple elements at once
-// this resutls in a node list that looks a log like an array but is not
-
-const paras = document.querySelectorAll("p");
-const errors = document.querySelectorAll(".error");
-// but can use [] notation and for each to get
-console.log(paras, errors);
-console.log(paras[1], errors[0]);
-console.log("*****************************************");
-paras.forEach(para => {
-  console.log(para);
-});
+// get elements by their tag name
+const paras = document.getElementsByTagName("p");
+console.log(paras);
+console.log(paras[1]);
