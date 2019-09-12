@@ -1,27 +1,19 @@
-// const para = document.querySelector("p");
-// this is a property , not a method
+// make ref to the element to be changed
+const link = document.querySelector("a");
+// innerText is not a methond , it is a property- so no paras at the end
 // console.log(para.innerText);
-// this changes it on the page !
-// para.innerText = "ninjas are awesome";
-// console.log(para.innerText);
-// to append to the page
-// para.innerText += " ninjas are awesome";
+// use the getAttribute method, pass in a string that is hte attribute we want to get
+console.log(link.getAttribute("href"));
+// use the setAttribute method that takes in 2 parameters, the attrbute to be changed and what to change it to.
 
-const paras = document.querySelectorAll("p");
-//cycle through the node list
-// pass the item we are cycling through into the call back function, can name it whatever in this case Sean is calling it  p
-// paras.forEach(p => {
-//   console.log(p.innerText);
-//   p.innerText += "new text!";
-// });
+link.setAttribute("href", "https://www.thenetninja.co.uk");
+// setting the text
+link.textContent = "The Net Ninja webiste";
 
-const content = document.querySelector(".content");
+const mssg = document.querySelector("p");
 
-// //************************************* */
-// outputting an html template for each item in the array.  could have gotten this from a database
-
-const people = ["mario", "luigi", "yoshi"];
-
-people.forEach(person => {
-  content.innerHTML += `<p>${person}</p>`;
-});
+console.log(mssg.getAttribute("class"));
+// this would be usefull if a user say filled out a form and was successfull to change text color or something
+mssg.setAttribute("class", "success");
+// creating a sytle attribute with javascript
+mssg.setAttribute("style", "color: green");
