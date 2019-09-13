@@ -1,25 +1,21 @@
-///// change classes with javascript
+const article = document.querySelector("article");
 
-// const content = document.querySelector("p");
-///// listing out the classList property for the p tag
-// console.log(content.classList);
-// content.classList.add("error");
-// content.classList.remove("success");
+//// turn the HTML collection into an array using the .from method on the JS Array object - pass in what you want to make the array from.  Note Array.from is not destructive , it doesn't alter  artcle.children ////
 
-const paras = document.querySelectorAll("p");
+// console.log(article.children);
+// console.log(Array.from(article.children));
+// console.log(article.children);
 
-paras.forEach(p => {
-  // textContent vs innerText, innerText will not show visible  textContent shows even hidden
-  if (p.textContent.includes("error")) {
-    p.classList.add("error");
-  } else if (p.textContent.includes("success")) {
-    p.classList.add("success");
-  }
+Array.from(article.children).forEach(child => {
+  child.classList.add("article-element");
 });
 
-//toggle classes
-const title = document.querySelector("title");
-//add
-title.classList.toggle("test");
-//then remove
-title.classList.toggle("test");
+const title = document.querySelector("h2");
+
+console.log(title.parentElement);
+console.log(title.parentElement.parentElement);
+console.log(title.nextElementSibling);
+console.log(title.previousElementSibling);
+
+// chaining
+console.log(title.nextElementSibling.parentElement.children);
