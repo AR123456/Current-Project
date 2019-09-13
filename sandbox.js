@@ -1,13 +1,25 @@
-// adding styles in the javascript
-const title = document.querySelector("h1");
-// this way fof settinghte attrbute overides everyething.
-// title.setAttribute('style', 'margin: 50px;');
-// console logging the many style attributes the  css propterty object
-console.log(title.style);
-console.log(title.style.color);
+///// change classes with javascript
 
-//this way of adding doesnet overide so it is better.
-title.style.margin = "50px";
-title.style.color = "crimson";
-title.style.fontSize = "60px";
-title.style.margin = " ";
+// const content = document.querySelector("p");
+///// listing out the classList property for the p tag
+// console.log(content.classList);
+// content.classList.add("error");
+// content.classList.remove("success");
+
+const paras = document.querySelectorAll("p");
+
+paras.forEach(p => {
+  // textContent vs innerText, innerText will not show visible  textContent shows even hidden
+  if (p.textContent.includes("error")) {
+    p.classList.add("error");
+  } else if (p.textContent.includes("success")) {
+    p.classList.add("success");
+  }
+});
+
+//toggle classes
+const title = document.querySelector("title");
+//add
+title.classList.toggle("test");
+//then remove
+title.classList.toggle("test");
