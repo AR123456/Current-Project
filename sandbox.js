@@ -1,17 +1,27 @@
-//const button = document.querySelector("button");
-/////// addEventListner takes in 2 arguments the event and then the call back function (what to do)
+const ul = document.querySelector("ul");
+// ul.remove();
+
+const button = document.querySelector("button");
+
+//// one way to add element to DOM
 // button.addEventListener("click", () => {
-//   console.log("you clicked me");
+//   ul.innerHTML += "<li>a new thing to do </li>";
 // });
-/// getting the node list on li items that are the to do ////
+/////another way to add something to the DOM
+button.addEventListener("click", () => {
+  const li = document.createElement("li");
+  li.textContent = "something new to do";
+  ////adds to the bottom of the parent
+  //ul.appendChild(li);
+  ///// add to the top of the parent
+  ul.prepend(li);
+});
+
 const items = document.querySelectorAll("li");
-// now using forEach to add the event listener to the items in the node list
+
 items.forEach(item => {
   item.addEventListener("click", e => {
-    console.log("item clicked");
-    console.log(e);
-    console.log(e.target);
-    console.log(item);
-    e.target.style.textDecoration = "line-through";
+    // e.target.style.textDecoration = 'line-through';
+    e.target.remove();
   });
 });
