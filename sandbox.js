@@ -1,21 +1,17 @@
-const article = document.querySelector("article");
-
-//// turn the HTML collection into an array using the .from method on the JS Array object - pass in what you want to make the array from.  Note Array.from is not destructive , it doesn't alter  artcle.children ////
-
-// console.log(article.children);
-// console.log(Array.from(article.children));
-// console.log(article.children);
-
-Array.from(article.children).forEach(child => {
-  child.classList.add("article-element");
+//const button = document.querySelector("button");
+/////// addEventListner takes in 2 arguments the event and then the call back function (what to do)
+// button.addEventListener("click", () => {
+//   console.log("you clicked me");
+// });
+/// getting the node list on li items that are the to do ////
+const items = document.querySelectorAll("li");
+// now using forEach to add the event listener to the items in the node list
+items.forEach(item => {
+  item.addEventListener("click", e => {
+    console.log("item clicked");
+    console.log(e);
+    console.log(e.target);
+    console.log(item);
+    e.target.style.textDecoration = "line-through";
+  });
 });
-
-const title = document.querySelector("h2");
-
-console.log(title.parentElement);
-console.log(title.parentElement.parentElement);
-console.log(title.nextElementSibling);
-console.log(title.previousElementSibling);
-
-// chaining
-console.log(title.nextElementSibling.parentElement.children);
