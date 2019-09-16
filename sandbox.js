@@ -1,31 +1,17 @@
-const ul = document.querySelector("ul");
-const button = document.querySelector("button");
+const copy = document.querySelector('.copy-me');
 
-button.addEventListener("click", () => {
-  const li = document.createElement("li");
-  li.textContent = "something new to do";
-  ul.appendChild(li);
+copy.addEventListener('copy', () => {
+  console.log('OI! my content is copyrighted!!');
 });
 
-// const items = document.querySelectorAll('li');
+const box = document.querySelector('.box');
 
-// items.forEach(item => {
-//   item.addEventListener('click', e => {
-//     console.log('event in LI');
-//     e.stopPropagation();
-//     e.target.remove();
-//   });
-// });
+box.addEventListener('mousemove', e => {
+  // console.log(e);
+  // console.log(e.offsetX, e.offsetY);
+  box.textContent = `x pos - ${e.offsetX}  y pos - ${e.offsetY}`;
+});
 
-/// add the event listener here so that it gets applied to dynamicaly created tags above
-
-ul.addEventListener("click", e => {
-  console.log('event in UL');
- // /find out what was clicked
-  console.log(e.target, e);
-  if (e.target.tagName === "LI") {
-    e.target.remove();
-  }
-
- 
+document.addEventListener('wheel', e => {
+  console.log(e.pageX, e.pageY);
 });
