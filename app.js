@@ -1,28 +1,29 @@
-const form = document.querySelector('.signup-form');
-const feedback = document.querySelector('.feedback');
-const usernamePattern = /^[a-zA-Z]{6,12}$/;
-
-// validation
-form.addEventListener('submit', e => {
+//array that stores the correc answers one for each question.
+const correctAnswers = ["B", "B", "B", "B"];
+// define form
+const form = document.querySelector(".quiz-form");
+// create the event listiner for the submint event and prevent page refresh
+form.addEventListener("submit", e => {
   e.preventDefault();
+  // create let scoure to store the users answers
+  let score = 0;
+  // targeting the form, the name of input field and the value of that name
+  const userAnswers = [
+    form.q1.value,
+    form.q2.value,
+    form.q3.value,
+    form.q4.value
+  ];
 
-  const username =  form.username.value;
+  // check the answers - comapre the userAnswere array to the correct answer array
+  // use the forEach 2 paraments for (user) answer and index of the answer
+  userAnswers.forEach((answer, index) => {
+    // copair and if true increment score by 25
+    if (answer === correctAnswers[index]) {
+      score += 25;
+    }
+  });
 
-  if(usernamePattern.test(username)){
-    feedback.textContent = 'that username is valid!'
-  } else {
-    feedback.textContent = 'username must contain only letters & be between 6 & 12 characters';
-  }
+  // log the score to console
+  console.log(score);
 });
-
-// live feedback
-form.username.addEventListener('keyup', e => {
-  // console.log(e.target.value, form.username.value);
-  if(usernamePattern.test(e.target.value)){
-    //console.log('passed');
-    form.username.setAttribute('class', 'success');
-  } else {
-    //console.log('failed');
-    form.username.setAttribute('class', 'error');
-  }
-})
