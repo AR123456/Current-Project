@@ -1,13 +1,12 @@
-//array that stores the correc answers one for each question.
 const correctAnswers = ["B", "B", "B", "B"];
-// define form
 const form = document.querySelector(".quiz-form");
-// create the event listiner for the submint event and prevent page refresh
+// get the resutl class from the html
+const result = document.querySelector(".result");
+
 form.addEventListener("submit", e => {
   e.preventDefault();
-  // create let scoure to store the users answers
+
   let score = 0;
-  // targeting the form, the name of input field and the value of that name
   const userAnswers = [
     form.q1.value,
     form.q2.value,
@@ -15,15 +14,16 @@ form.addEventListener("submit", e => {
     form.q4.value
   ];
 
-  // check the answers - comapre the userAnswere array to the correct answer array
-  // use the forEach 2 paraments for (user) answer and index of the answer
+  // check the answers
   userAnswers.forEach((answer, index) => {
-    // copair and if true increment score by 25
     if (answer === correctAnswers[index]) {
       score += 25;
     }
   });
 
-  // log the score to console
-  console.log(score);
+  // show the result in the DOM- use theresult const that we defined above
+  // add querySelector to get the results from the span tag- span is in the scope of the result div - change the text content of it using textContent  - template literal score
+  result.querySelector("span").textContent = `${score}%`;
+  // remove the display none from the html - this will happen when the form gets submitted (IE there is a score), on page load
+  result.classList.remove("d-none");
 });
