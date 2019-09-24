@@ -1,6 +1,5 @@
 const correctAnswers = ["B", "B", "B", "B"];
 const form = document.querySelector(".quiz-form");
-// get the resutl class from the html
 const result = document.querySelector(".result");
 
 form.addEventListener("submit", e => {
@@ -21,9 +20,26 @@ form.addEventListener("submit", e => {
     }
   });
 
-  // show the result in the DOM- use theresult const that we defined above
-  // add querySelector to get the results from the span tag- span is in the scope of the result div - change the text content of it using textContent  - template literal score
+  // show the result
+  // using the window object to scroll to the top , dont have to say window.  its infered
+  scrollTo(0, 0);
   result.querySelector("span").textContent = `${score}%`;
-  // remove the display none from the html - this will happen when the form gets submitted (IE there is a score), on page load
   result.classList.remove("d-none");
 });
+
+// window object (the global object)
+
+// console.log(window);
+
+// console.log('hello');
+// window.console.log('hello');
+
+// console.log(document.querySelector('form'));
+// console.log(window.document.querySelector('form'));
+
+// // alert('hello');
+// // window.alert('hello again');
+// setTimeout takes a callback function and runs it after a set amount of time .
+setTimeout(() => {
+  alert("hello, ninjas");
+}, 3000);
