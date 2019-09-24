@@ -21,25 +21,19 @@ form.addEventListener("submit", e => {
   });
 
   // show the result
-  // using the window object to scroll to the top , dont have to say window.  its infered
   scrollTo(0, 0);
-  result.querySelector("span").textContent = `${score}%`;
   result.classList.remove("d-none");
+
+  let output = 0;
+  const timer = setInterval(() => {
+    //inside the call back get resutls and output the output counter
+    result.querySelector("span").textContent = `${output}%`;
+    if (output === score) {
+      // increment the output untill it is equal to score and run this every mili second  this gives the counting up effect to the number
+
+      clearInterval(timer);
+    } else {
+      output++;
+    }
+  }, 10);
 });
-
-// window object (the global object)
-
-// console.log(window);
-
-// console.log('hello');
-// window.console.log('hello');
-
-// console.log(document.querySelector('form'));
-// console.log(window.document.querySelector('form'));
-
-// // alert('hello');
-// // window.alert('hello again');
-// setTimeout takes a callback function and runs it after a set amount of time .
-setTimeout(() => {
-  alert("hello, ninjas");
-}, 3000);
