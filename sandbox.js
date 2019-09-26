@@ -1,29 +1,30 @@
-//The map method takes an array and maps it into a new array, itterates an array and perform a function on each value, then retun a new value.  New values stored in a new array retunred by the map method.  It is no destructive, the orginal array stays the same.
+// reduce can return any value you want based on the values in the array that are iterated over like a number, string or new array
+//callback funtion perfomed on each value
 
-const prices = [20, 10, 30, 25, 15, 40, 80, 5];
-// takes a call back funcition and in it return the value
-const salePrices = prices.map(prices => {
-  return price / 2;
-});
-// same thing shorthand version
-//const salePrices = prices.map(price => price / 2);
-
-console.log(salePrices);
-
-const products = [
-  { name: "gold star", price: 20 },
-  { name: "mushroom", price: 40 },
-  { name: "green shells", price: 30 },
-  { name: "banana skin", price: 10 },
-  { name: "red shells", price: 50 }
-];
-// 2 propertyies name and price, map to new array and change price to 50% off if the original price is higher than 30
-const saleProducts = products.map(product => {
-  if (product.price > 30) {
-    return { name: product.name, price: product.price / 2 };
-  } else {
-    return product;
+const scores1 = [10, 20, 60, 40, 70, 90, 30];
+// call back takes in accumulator(a running total) and current
+const result = scores1.reduce((acc, curr) => {
+  if (curr > 50) {
+    acc++;
   }
-});
+  return acc;
+  //passing an argument which is the inital value of the accumulator of zero
+}, 0);
 
-console.log(products, saleProducts);
+console.log(result);
+
+const scores = [
+  { player: "mario", score: 50 },
+  { player: "yoshi", score: 30 },
+  { player: "mario", score: 70 },
+  { player: "crystal", score: 60 }
+];
+
+const marioTotal = scores.reduce((acc, curr) => {
+  if (curr.player === "mario") {
+    acc += curr.score;
+  }
+  return acc;
+}, 0);
+
+console.log(marioTotal);
