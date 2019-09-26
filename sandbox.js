@@ -1,11 +1,44 @@
-// the find method returns the value of the first item in an array that passes a certain test in a callback function
-// once the value is found it stops and returns it.
-const scores = [10, 5, 0, 40, 60, 10, 20, 70];
+//sort changes the existing array it is destructive
 
-const firstHighScore = scores.find(score => {
-  // returns true or false, stops when true is found and returns the value to the variable
-  return score > 50;
+// example 1 - sorting strings
+const names = ["mario", "shaun", "chun-li", "yoshi", "luigi"];
+
+// names.sort();
+names.reverse();
+console.log(names);
+
+// example 2 - sorting numbers- sort only looks at the frist number
+const scores = [10, 50, 20, 5, 35, 70, 45];
+// to fix this use the compare
+scores.sort((a, b) => a - b);
+
+// scores.sort();
+// scores.reverse();
+console.log(scores);
+
+// example 3 - sorting objects
+const players = [
+  { name: "mario", score: 20 },
+  { name: "luigi", score: 10 },
+  { name: "chun-li", score: 50 },
+  { name: "yoshi", score: 30 },
+  { name: "shaun", score: 70 }
+];
+
+players.sort((a, b) => {
+  // using compare takes 2 consecutive elements in the array and compares them to oneanohter
+  // returns a zero or postive or negative number , if a should come first return negative it b should come first return a positive number if they are equal retun zero
+  if (a.score > b.score) {
+    // makes a come first in the sorted array
+    return -1;
+  } else if (b.score > a.score) {
+    // b will be switeched so it is first
+    return 1;
+  } else {
+    return 0;
+  }
 });
-// short hand way to wright
-const firstHighScore = scores.find(score => score > 50);
-console.log(firstHighScore);
+//short hand
+// players.sort((a, b) => b.score - a.score);
+
+console.log(players);
