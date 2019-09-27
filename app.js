@@ -1,10 +1,7 @@
-//get ref to the form
 const addForm = document.querySelector(".add");
 const list = document.querySelector(".todos");
-// function to generate a resuable text template with a do do in it
-// pass in the users todo
+
 const generateTemplate = todo => {
-  //creating the template string
   const html = `
     <li class="list-group-item d-flex justify-content-between align-items-center">
       <span>${todo}</span>
@@ -13,17 +10,23 @@ const generateTemplate = todo => {
   `;
   list.innerHTML += html;
 };
-//add event listoner
+
 addForm.addEventListener("submit", e => {
   e.preventDefault();
-  const todo =
-    // use .trim to remove the spaces
-    addForm.add.value.trim();
-  // check to see if user has a todo
+  const todo = addForm.add.value.trim();
+
   if (todo.length) {
-    //call this function if there is a todo
     generateTemplate(todo);
-    //use .reset to reset the input feilds in the form
     addForm.reset();
+  }
+});
+
+// delete todos
+// add todos using event delegation to liston to the ul , the whole list.
+list.addEventListener("click", e => {
+  // target just the stuff with the delete transhcan
+  if (e.target.classList.contains("delete")) {
+    // travers the dom to delete the parent
+    e.target.parentElement.remove();
   }
 });
