@@ -1,25 +1,21 @@
-// useing date constructorto create a new object, a date object
-// Date() automaticaly creates date now, when run
-// the new keyword goes before a constructor - essentially it is calling a function to create an object of this date type
+//const before = new Date('02/01/2019 7:30:59');
+// passing is string to get the date object of that date
+const before = new Date("February 1 2019 7:30:59");
 const now = new Date();
+// getTime() is a number representing the number of miliseconds since 12am on the 1st of January 1970
+const diff = now.getTime() - before.getTime();
+// const diff = now - before;  gets the number of mili seconds between the 2 dates
 
-console.log(now);
-// typeof operator will tell us what this is 
-console.log(typeof now);
+console.log(diff);
 
-// years, months, days, times methods are avalible using the date object 
-console.log("getFullYear:", now.getFullYear());
-console.log("getMonth (0-based):", now.getMonth());
-console.log("getDate:", now.getDate());
-console.log("getDay (0-based):", now.getDay());
-console.log("getHours:", now.getHours());
-console.log("getMinutes:", now.getMinutes());
-console.log("getSeconds:", now.getSeconds());
+const mins = Math.round(diff / 1000 / 60);
+const hours = Math.round(mins / 60);
+const days = Math.round(hours / 24);
 
-// timestamps
-console.log("timestamp:", now.getTime());
+console.log(`the before date was ${mins} mins ago`);
+console.log(`the before date was ${hours} hours ago`);
+console.log(`the before date was ${days} days ago`);
 
-// date strings
-console.log(now.toDateString());
-console.log(now.toTimeString());
-console.log(now.toLocaleString());
+// converting timestamps to dates
+const timestamp = 1675938474990;
+console.log(new Date(timestamp));
