@@ -1,15 +1,9 @@
-const now = new Date();
+console.log(1);
+console.log(2);
+// this is mimicing a HTTP request which will do next lesson
+setTimeout(() => {
+  console.log("callback function fired");
+}, 2000);
 
-console.log(dateFns.isToday(now));
-
-// formatting options
-console.log(dateFns.format(now, 'YYYY'));
-console.log(dateFns.format(now, 'MMMM'));
-console.log(dateFns.format(now, 'dddd'));
-console.log(dateFns.format(now, 'Do'));
-console.log(dateFns.format(now, 'dddd, Do MMMM, YYYY'));
-
-// comparing dates
-const before = new Date('February 1 2019 12:00:00');
-
-console.log(dateFns.distanceInWords(now, before, {addSuffix: true}));
+console.log(3);
+console.log(4);
