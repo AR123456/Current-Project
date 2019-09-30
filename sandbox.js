@@ -1,22 +1,21 @@
-// creating a function to make it resuable
+//json is just a long string htat looks like an object , need to turn it into a JS object
 
 const getTodos = callback => {
   const request = new XMLHttpRequest();
 
   request.addEventListener("readystatechange", () => {
     if (request.readyState === 4 && request.status === 200) {
-      callback(undefined, request.responseText);
+      //JSON.parse turns the data into a JS object
+      const data = JSON.parse(request.responseText);
+      callback(undefined, data);
     } else if (request.readyState === 4) {
       callback("could not fetch the data", undefined);
     }
   });
 
-  request.open("GET", "https://jsonplaceholder.typicode.com/todos/");
+  request.open("GET", "todos.json");
   request.send();
 };
-
-console.log(1);
-console.log(2);
 
 getTodos((err, data) => {
   console.log("callback function fired");
@@ -26,6 +25,3 @@ getTodos((err, data) => {
     console.log(data);
   }
 });
-
-console.log(3);
-console.log(4);
