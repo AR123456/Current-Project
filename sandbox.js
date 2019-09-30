@@ -1,27 +1,29 @@
-//json is just a long string htat looks like an object , need to turn it into a JS object
+const getTodos = (resource, callback) => {
 
-const getTodos = callback => {
   const request = new XMLHttpRequest();
 
-  request.addEventListener("readystatechange", () => {
-    if (request.readyState === 4 && request.status === 200) {
-      //JSON.parse turns the data into a JS object
+  request.addEventListener('readystatechange', () => {
+
+    if(request.readyState === 4 && request.status === 200){
       const data = JSON.parse(request.responseText);
       callback(undefined, data);
-    } else if (request.readyState === 4) {
-      callback("could not fetch the data", undefined);
+    } else if (request.readyState === 4){
+      callback('could not fetch the data', undefined);
     }
-  });
 
-  request.open("GET", "todos.json");
+  });
+  
+  request.open('GET', resource);
   request.send();
+
 };
 
-getTodos((err, data) => {
-  console.log("callback function fired");
-  if (err) {
-    console.log(err);
-  } else {
+getTodos('json/luigi.json', (err, data) => {
+  console.log(data);
+  getTodos('json/mario.json', (err, data) => {
     console.log(data);
-  }
+    getTodos('json/shaun.json', (err, data) => {
+      console.log(data);
+    });
+  });
 });
