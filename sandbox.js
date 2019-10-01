@@ -1,5 +1,4 @@
 const getTodos = resource => {
-  // JS Promise
   return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
 
@@ -16,39 +15,23 @@ const getTodos = resource => {
     request.send();
   });
 };
-// .then and  . catch
+
 getTodos("json/luigi.json")
   .then(data => {
-    console.log("promise resolved:", data);
+    console.log("promise 1 resolved:", data);
+    //returning a promise
+    return getTodos("json/mario.json");
   })
-  .catch(err => {
-    console.log("promise rejected:", err);
-  });
-
-// promise example one
-const getSomething = () => {
-  // first return a new Promise  it iwll resolve or be rejected if there is an error
-  // resolve and refject are prarameters ready made in Promis
-  return new Promise((resolve, reject) => {
-    // do something  fetch data
-    // resolve ('some data')
-    reject("some error");
-  });
-};
-
-getSomething().then(
-  data => {
-    console.log("promise resolved:", data);
-  },
-  err => {
-    console.log("promise rejected:", err);
-  }
-);
-// using catch  - looks better espcially when chaining promises
-getSomething()
   .then(data => {
-    console.log("promise resolved:", data);
+    // do this after 1st reques is done
+    console.log("promise 2 resolved:", data);
+    // return here gets the next promise
+    return getTodos("json/shaun.json");
+  })
+  .then(data => {
+    console.log("promise 3 resolved:", data);
   })
   .catch(err => {
+    //catch would apply to any of the requests
     console.log("promise rejected:", err);
   });
