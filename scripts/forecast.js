@@ -1,4 +1,3 @@
-// for interacting with API s
 const key = "X5qzdoyKCwiNNhtDP4jFxO2kPbTIH5m9";
 
 // get weather information
