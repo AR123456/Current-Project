@@ -1,30 +1,29 @@
 const cityForm = document.querySelector("form");
-// for the card class
 const card = document.querySelector(".card");
-// for the detail class
 const details = document.querySelector(".details");
-// this is updating the dom with the "data" we get back from the updateCity function
+
 const updateUI = data => {
-  // doing this so that we can just reference data.cityDets as cityDets and data.weather as weather
-  const cityDets = data.cityDets;
-  const weather = data.weather;
+  // ////////////////destructure properties - can take properties off the object and store them in a variable that is the same name as the property
+  //  so
+  // const cityDets = data.cityDets;
+  // const weather = data.weather;
+  //////////////////////////////////// //becomes this all on one line
+  // const must be the same names as the propertyies we are getting from the object
+  // what this destructureing is saying is get cityDets from the data object and store it in a const called cityDets , get weather from the data object and store it in a const called weather.
+  const { cityDets, weather } = data;
 
   // update details template
-  // using a template string to send data to the dom
-  //Sean just did a copy paste from the HTML file as a starter and then used ${} to switch the text out for the data that came back
   details.innerHTML = `
     <h5 class="my-3">${cityDets.EnglishName}</h5>
     <div class="my-3">${weather.WeatherText}</div>
     <div class="display-4 my-4">
-      <span>${weather.Temperature.Imperial.Value}</span>
-      <span>&deg;F</span>
+      <span>${weather.Temperature.Metric.Value}</span>
+      <span>&deg;C</span>
     </div>
   `;
 
-  // remove the d-none class if present - addded to the HTML
-  //
+  // remove the d-none class if present
   if (card.classList.contains("d-none")) {
-    //   if present remove it
     card.classList.remove("d-none");
   }
 };
@@ -45,7 +44,6 @@ cityForm.addEventListener("submit", e => {
 
   // update the ui with new city
   updateCity(city)
-    // pass the data we get back into the updateUi function
     .then(data => updateUI(data))
     .catch(err => console.log(err));
 });
