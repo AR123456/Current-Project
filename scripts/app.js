@@ -1,7 +1,6 @@
 const cityForm = document.querySelector("form");
 const card = document.querySelector(".card");
 const details = document.querySelector(".details");
-//referance the time and icon images in the html
 const time = document.querySelector("img.time");
 const icon = document.querySelector(".icon img");
 
@@ -19,18 +18,23 @@ const updateUI = data => {
     </div>
   `;
 
-  //////// update the  icon images
-  //since the icon objects have been renamed to be a number, can just use back ticks and concatonate dynamicaly
+  // update the night/day & icon images
   const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
   icon.setAttribute("src", iconSrc);
-  ///////// update the night/day   icon images
-  let timeSrc = null;
-  if (weather.IsDayTime) {
-    timeSrc = "img/day.svg";
-  } else {
-    timeSrc = "img/night.svg";
-  }
-  // update the html
+
+  ////////////////////////////////////// using ternary operator this :
+  // let timeSrc = null;
+  // if (weather.IsDayTime) {
+  //   timeSrc = "img/day.svg";
+  // } else {
+  //   timeSrc = "img/night.svg";
+  // }
+  /////////////////////////////////////// becomes this
+  /// syntax
+  ///  set variable to a condition to compare , the outcome of which will be set to the variable
+  // cosnt result = condition ? "value1" : "value2"  , if the contiion is true the left value is returned if false the right value is retuned
+
+  const timeSrc = weather.IsDayTime ? "img/day.svg" : "img/night.svg";
   time.setAttribute("src", timeSrc);
 
   // remove the d-none class if present
