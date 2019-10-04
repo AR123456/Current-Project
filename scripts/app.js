@@ -1,15 +1,12 @@
 const cityForm = document.querySelector("form");
 const card = document.querySelector(".card");
 const details = document.querySelector(".details");
+//referance the time and icon images in the html
+const time = document.querySelector("img.time");
+const icon = document.querySelector(".icon img");
 
 const updateUI = data => {
-  // ////////////////destructure properties - can take properties off the object and store them in a variable that is the same name as the property
-  //  so
-  // const cityDets = data.cityDets;
-  // const weather = data.weather;
-  //////////////////////////////////// //becomes this all on one line
-  // const must be the same names as the propertyies we are getting from the object
-  // what this destructureing is saying is get cityDets from the data object and store it in a const called cityDets , get weather from the data object and store it in a const called weather.
+  // destructure properties
   const { cityDets, weather } = data;
 
   // update details template
@@ -17,10 +14,24 @@ const updateUI = data => {
     <h5 class="my-3">${cityDets.EnglishName}</h5>
     <div class="my-3">${weather.WeatherText}</div>
     <div class="display-4 my-4">
-      <span>${weather.Temperature.Metric.Value}</span>
+      <span>${weather.Temperature.Imperial.Value}</span>
       <span>&deg;C</span>
     </div>
   `;
+
+  //////// update the  icon images
+  //since the icon objects have been renamed to be a number, can just use back ticks and concatonate dynamicaly
+  const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
+  icon.setAttribute("src", iconSrc);
+  ///////// update the night/day   icon images
+  let timeSrc = null;
+  if (weather.IsDayTime) {
+    timeSrc = "img/day.svg";
+  } else {
+    timeSrc = "img/night.svg";
+  }
+  // update the html
+  time.setAttribute("src", timeSrc);
 
   // remove the d-none class if present
   if (card.classList.contains("d-none")) {
