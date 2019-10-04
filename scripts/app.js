@@ -22,18 +22,6 @@ const updateUI = data => {
   const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
   icon.setAttribute("src", iconSrc);
 
-  ////////////////////////////////////// using ternary operator this :
-  // let timeSrc = null;
-  // if (weather.IsDayTime) {
-  //   timeSrc = "img/day.svg";
-  // } else {
-  //   timeSrc = "img/night.svg";
-  // }
-  /////////////////////////////////////// becomes this
-  /// syntax
-  ///  set variable to a condition to compare , the outcome of which will be set to the variable
-  // cosnt result = condition ? "value1" : "value2"  , if the contiion is true the left value is returned if false the right value is retuned
-
   const timeSrc = weather.IsDayTime ? "img/day.svg" : "img/night.svg";
   time.setAttribute("src", timeSrc);
 
@@ -61,4 +49,19 @@ cityForm.addEventListener("submit", e => {
   updateCity(city)
     .then(data => updateUI(data))
     .catch(err => console.log(err));
+
+  // set local storage  - setting this so that when user leaves and come back it rememters the on submint
+  // also saved with page reset - this will be the last used since we would be over writting
+  localStorage.setItem("city", city);
 });
+// //////////////check to see if there is a city stored , if so load that city.
+// this is outside of the funcion in the root.
+// a string of any lenght is alway truthy
+if (localStorage.getItem("city")) {
+  // if there is a city in local storage run the updateCity function
+  updateCity(localStorage.getItem("city"))
+    // this returns a promise so need  " .then"
+    // call updateUI function passing in data or the city from local storage
+    .then(data => updateUI(data))
+    .catch(err => console.log(err));
+}
