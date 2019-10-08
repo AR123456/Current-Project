@@ -3,6 +3,7 @@ const card = document.querySelector(".card");
 const details = document.querySelector(".details");
 const time = document.querySelector("img.time");
 const icon = document.querySelector(".icon img");
+const forecast = new Forecast();
 
 const updateUI = data => {
   // destructure properties
@@ -31,12 +32,6 @@ const updateUI = data => {
   }
 };
 
-const updateCity = async city => {
-  const cityDets = await getCity(city);
-  const weather = await getWeather(cityDets.Key);
-  return { cityDets, weather };
-};
-
 cityForm.addEventListener("submit", e => {
   // prevent default action
   e.preventDefault();
@@ -46,22 +41,18 @@ cityForm.addEventListener("submit", e => {
   cityForm.reset();
 
   // update the ui with new city
-  updateCity(city)
+  forecast
+    .updateCity(city)
     .then(data => updateUI(data))
     .catch(err => console.log(err));
 
-  // set local storage  - setting this so that when user leaves and come back it rememters the on submint
-  // also saved with page reset - this will be the last used since we would be over writting
+  // set local storage
   localStorage.setItem("city", city);
 });
-// //////////////check to see if there is a city stored , if so load that city.
-// this is outside of the funcion in the root.
-// a string of any lenght is alway truthy
+
 if (localStorage.getItem("city")) {
-  // if there is a city in local storage run the updateCity function
-  updateCity(localStorage.getItem("city"))
-    // this returns a promise so need  " .then"
-    // call updateUI function passing in data or the city from local storage
+  forecast
+    .updateCity(localStorage.getItem("city"))
     .then(data => updateUI(data))
     .catch(err => console.log(err));
 }
