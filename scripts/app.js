@@ -1,58 +1,47 @@
-const cityForm = document.querySelector("form");
-const card = document.querySelector(".card");
-const details = document.querySelector(".details");
-const time = document.querySelector("img.time");
-const icon = document.querySelector(".icon img");
-const forecast = new Forecast();
+// dom queries
+const chatList = document.querySelector('.chat-list');
+const newChatForm = document.querySelector('.new-chat');
+const newNameForm = document.querySelector('.new-name');
+const updateMssg = document.querySelector('.update-mssg');
+const rooms = document.querySelector('.chat-rooms');
 
-const updateUI = data => {
-  // destructure properties
-  const { cityDets, weather } = data;
-
-  // update details template
-  details.innerHTML = `
-    <h5 class="my-3">${cityDets.EnglishName}</h5>
-    <div class="my-3">${weather.WeatherText}</div>
-    <div class="display-4 my-4">
-      <span>${weather.Temperature.Imperial.Value}</span>
-      <span>&deg;C</span>
-    </div>
-  `;
-
-  // update the night/day & icon images
-  const iconSrc = `img/icons/${weather.WeatherIcon}.svg`;
-  icon.setAttribute("src", iconSrc);
-
-  const timeSrc = weather.IsDayTime ? "img/day.svg" : "img/night.svg";
-  time.setAttribute("src", timeSrc);
-
-  // remove the d-none class if present
-  if (card.classList.contains("d-none")) {
-    card.classList.remove("d-none");
-  }
-};
-
-cityForm.addEventListener("submit", e => {
-  // prevent default action
+// add a new chat
+newChatForm.addEventListener('submit', e => {
   e.preventDefault();
-
-  // get city value
-  const city = cityForm.city.value.trim();
-  cityForm.reset();
-
-  // update the ui with new city
-  forecast
-    .updateCity(city)
-    .then(data => updateUI(data))
+  const message = newChatForm.message.value.trim();
+  chatroom.addChat(message)
+    .then(() => newChatForm.reset())
     .catch(err => console.log(err));
-
-  // set local storage
-  localStorage.setItem("city", city);
 });
 
-if (localStorage.getItem("city")) {
-  forecast
-    .updateCity(localStorage.getItem("city"))
-    .then(data => updateUI(data))
-    .catch(err => console.log(err));
-}
+// update the username
+newNameForm.addEventListener('submit', e => {
+  e.preventDefault();
+  // update name via chatroom
+  const newName = newNameForm.name.value.trim();
+  chatroom.updateName(newName);
+  // reset the form
+  newNameForm.reset();
+  // show then hide the update message
+  updateMssg.innerText = `Your name was updated to ${newName}`;
+  setTimeout(() => updateMssg.innerText = '', 3000);
+});
+
+// update the chat room
+rooms.addEventListener('click', e => {
+  if(e.target.tagName === 'BUTTON'){
+    chatUI.clear();
+    chatroom.updateRoom(e.target.getAttribute('id'));
+    chatroom.getChats(chat => chatUI.render(chat));
+  }
+});
+
+// check local storage for name
+const username = localStorage.username ? localStorage.username : 'anon';
+
+// class instances
+const chatUI = new ChatUI(chatList);
+const chatroom = new Chatroom('gaming', username);
+
+// get chats & render
+chatroom.getChats(data => chatUI.render(data));
