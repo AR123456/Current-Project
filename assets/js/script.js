@@ -5,7 +5,7 @@
 // 1st: pull initial budgetItems/lastID from localStorage to set initial variables
 // local storage on chrom will not retain the order of key value pairs - to get an ordered set of key value pairs use an array, local storage need to be a string stringigfy first then turn back into object by parsing it to turn it back into an object
 // in chrome dev tools can see what is in local storage by typing local storage can clear it from console by typing localStorage.clear
-const budgetItems = JSON.parse(localStorage.getItem("budgetItems")) || [];
+let budgetItems = JSON.parse(localStorage.getItem("budgetItems")) || [];
 let lastID = localStorage.getItem("lastID") || 0;
 
 // ======================
@@ -21,17 +21,34 @@ const updateStorage = () => {
 // <tr data-id="2"><td>Oct 14, 2019 5:08 PM</td><td>November Rent</td><td>Rent/Mortgage</td><td>1300</td><td>Fill out lease renewal form!</td><td class="delete"><span>x</span></td></tr>
 // also, update total amount spent on page (based on selected category):
 const renderItems = items => {
+  // if no specific array is passed in, use the full budgetItems array
   if (!items) items = budgetItems;
-
-  //create a variable pointer to the tbody
+  // saving reference to tbody (to make reusability easier)
   const tbody = $("#budgetItems tbody");
-  //clear out previous table rows
+  // emptying out previous budget items before rendering newest budget items
   tbody.empty();
-  // loop through items array, make one row per item
+
+  // looping through budget items
   items.forEach(item => {
-    const row = `<tr data-id=${item.id}><td>${item.date}</td><td>${item.name}</td><td>${item.category}</td><td>${item.amount}</td><td>${item.notes}</td><td class="delete"><span>x</span></td></tr>`;
+    // creating a new row for each item, and putting a 'data-id' attribute on the row (we'll use this
+    // later to know which budget item to delete on click of the delete 'x')
+    const row = `<tr data-id=${item.id}><td>${item.date}</td><td>${
+      item.name
+    }</td><td>${item.category}</td><td>$${parseFloat(item.amount).toFixed(
+      2
+    )}</td><td>${item.notes}</td><td class="delete"><span>x</span></td></tr>`;
+    // prepending each row (created above) to the tbody element
+    tbody.append(row);
   });
-  //ect
+
+  // using a reduce to get a total amount spent for all budget items in either the passed-in
+  // array OR the default budgetItems array
+  const total = items.reduce(
+    (accum, item) => accum + parseFloat(item.amount),
+    0
+  );
+  // printing that total on the page, and using '.toFixed(2)' to print out exactly two decimal points
+  $("#total").text(`$${total.toFixed(2)}`);
 };
 
 // ======================
@@ -89,5 +106,29 @@ $("#addItem").on("click", function(event) {
 });
 
 // 6th: wire up change event on the category select menu, show filtered budgetItems based on selection
+$("#categoryFilter").on("change", function() {
+  const category = $(this).val();
+  if (category) {
+    const filteredItems = budgetItems.filter(
+      item => item.category === category
+    );
+    renderItems(filteredItems);
+  } else {
+    renderItems();
+  }
+});
 
 // 7th: wire up click event on the delete button of a given row; on click delete that budgetItem
+
+$("#budgetItems").on("click", ".delete", function() {
+  const id = parseInt(
+    $(this)
+      .parents("tr")
+      .attr("data-id")
+  );
+  const remainingItems = budgetItems.filter(item => item.id !== id);
+  budgetItems = remainingItems;
+  updateStorage();
+  renderItems();
+  $("#categoryFilter").val("");
+});
