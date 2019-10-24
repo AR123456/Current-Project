@@ -4,6 +4,14 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 const nodemailer = require("nodemailer");
 const sendgridTransport = require("nodemailer-sendgrid-transport");
+/// for the sendgrid implementation
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: " "
+    }
+  })
+);
 
 const app = express();
 // view engine handlebars
@@ -32,15 +40,6 @@ app.post("/send", (req, res) => {
     <h3>Message</h3>
   <p>${req.body.message}</p>
   `;
-
-  /// for the sendgrid implementation
-  const transporter = nodemailer.createTransport(
-    sendgridTransport({
-      auth: {
-        api_key: " "
-      }
-    })
-  );
 
   // setup email data with unicode symbols
   let mailOptions = {
