@@ -41,10 +41,25 @@ guessBtn.addEventListener("click", function() {
     //change border color of the input box
     guessInput.style.borderColor = "green";
     setMessage(`${winningNum} is correct, You Win !`, "green");
-//   } else {
-//     guessInput.style.borderColor = "red";
-//     setMessage(`${guess} is not correct, try again`, "red");
-//   }
+  } else {
+    //wrong guess
+    guessesLeft -= 1;
+    if (guessesLeft === 0) {
+      // game over
+      guessInput.disabled = true;
+      guessInput.style.borderColor = "red";
+      setMessage(`Game over, the correct number was ${winningNum}`, "red");
+    } else {
+      // clear the input from the form
+      guessInput.value = "";
+      //game continues
+      guessInput.style.borderColor = "red";
+      setMessage(
+        `${guess} is not correct, try again.  ${guessesLeft} guesses remaining`,
+        "red"
+      );
+    }
+  }
 });
 
 // setMessage function
