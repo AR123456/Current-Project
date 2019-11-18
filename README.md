@@ -1,1 +1,1 @@
-# Project Template bootstrap 4.1
+# Using Just Javascript and local storage to create a calorie tracking app
