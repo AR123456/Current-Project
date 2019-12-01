@@ -1,7 +1,7 @@
 min = 10;
-max = 100;
+max = 50;
 size = 800;
-time = 2.5;
+time = 2.0;
 delay = 0.25;
 var tl = new TimelineMax({ repeat: -1, repeatDelay: delay })
   .to(".vert", time, { attr: { rx: max } })
