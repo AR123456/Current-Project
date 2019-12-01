@@ -24,16 +24,8 @@ body {
 }
 .digits > div svg ellipse {
   fill: none;
-  stroke: linear-gradient(
-    to right,
-    #bcbcbc 25%,
-    #ffcd02 25%,
-    #ffcd02 50%,
-    #e84f47 50%,
-    #e84f47 75%,
-    #65c1ac 75%
-  );
-  /* stroke: #ffffff; */
+
+  stroke: orange;
   stroke-width: 5;
   stroke-miterlimit: 10;
 }
