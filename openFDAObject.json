@@ -1,0 +1,91 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2019-05-18",
+    "results": {
+      "skip": 0,
+      "limit": 1,
+      "total": 10386
+    }
+  },
+  "results": [
+    {
+      "effective_time": "20120711",
+      "inactive_ingredient": [
+        "INACTIVE INGREDIENTS Lactose, magnesium stearate."
+      ],
+      "references": [
+        "The letters 'HPUS' indicate that the components in this product are officially monographed in the Homeopathic Pharmacopoeia of the United States."
+      ],
+      "keep_out_of_reach_of_children": ["Keep out of reach of children."],
+      "purpose": [
+        "PURPOSE dry scaly skin dry and cracked skin, body rash itching and redness intense itching behind the ears, redness, dry and cracked skin itching dry skin and itching itching rash"
+      ],
+      "warnings": [
+        "WARNINGS Stop use and ask a doctor if symptoms worsen or persist for more than 7 days. If pregnant or breast-feeding, ask a health professional before use. Keep out of reach of children."
+      ],
+      "spl_product_data_elements": [
+        "ECZEMAREAL RELIEF FUMARIA OFFICINALIS, NATRUM MURIATICUM, AGARICUS MUSCARIUS, PETROLEUM, SEPIA, KALI ARSENICOSUM, ALUMINA FUMARIA OFFICINALIS FLOWERING TOP FUMARIA OFFICINALIS FLOWERING TOP SODIUM CHLORIDE SODIUM CATION AMANITA MUSCARIA VAR. MUSCARIA FRUITING BODY AMANITA MUSCARIA VAR. MUSCARIA FRUITING BODY KEROSENE KEROSENE SEPIA OFFICINALIS JUICE SEPIA OFFICINALIS JUICE POTASSIUM ARSENITE ANHYDROUS ARSENITE ION ALUMINUM OXIDE ALUMINUM OXIDE LACTOSE MAGNESIUM STEARATE"
+      ],
+      "other_safety_information": [
+        "OTHER INFORMATION Store at room temperature (68 - 77F). Do not use if seal is broken or missing."
+      ],
+      "openfda": {
+        "product_ndc": ["60512-6009"],
+        "is_original_packager": [true],
+        "package_ndc": ["60512-6009-0"],
+        "generic_name": [
+          "FUMARIA OFFICINALIS, NATRUM MURIATICUM, AGARICUS MUSCARIUS, PETROLEUM, SEPIA, KALI ARSENICOSUM, ALUMINA"
+        ],
+        "spl_set_id": ["000cf6bc-9e52-4261-9c73-4087c5ba1142"],
+        "upc": ["0778159414572"],
+        "brand_name": ["ECZEMA REAL RELIEF"],
+        "manufacturer_name": ["HOMEOLAB USA INC."],
+        "unii": [
+          "BM2U42PAKI",
+          "QDL83WN8C2",
+          "451W47IQ8X",
+          "LMI26O6933",
+          "VH659J61ZL",
+          "1C89KKC04E"
+        ],
+        "spl_id": ["9e770f5d-cbc0-4eb9-8093-cbf96900693a"],
+        "substance_name": [
+          "SEPIA OFFICINALIS JUICE",
+          "KEROSENE",
+          "AMANITA MUSCARIA VAR. MUSCARIA FRUITING BODY",
+          "SODIUM CHLORIDE",
+          "FUMARIA OFFICINALIS FLOWERING TOP",
+          "ALUMINUM OXIDE",
+          "POTASSIUM ARSENITE ANHYDROUS"
+        ],
+        "product_type": ["HUMAN OTC DRUG"],
+        "route": ["ORAL"]
+      },
+      "version": "1",
+      "dosage_and_administration": [
+        "DIRECTIONS Chew tablets and let dissolve in mouth. Do not use more than directed. Do not take with food. Repeat 3 times daily and reduce intake with improvement or as directed by a health professional. Age Dose Adults and children 12 years of age and older 2 tablets Children 2 to 11 years of age 1 tablet Children under 2 years of age Ask a doctor"
+      ],
+      "pregnancy_or_breast_feeding": [
+        "If pregnant or breast-feeding, ask a health professional before use."
+      ],
+      "stop_use": [
+        "Stop use and ask a doctor if symptoms worsen or persist for more than 7 days."
+      ],
+      "package_label_principal_display_panel": ["CARTON image of carton label"],
+      "indications_and_usage": [
+        "USES This homeopathic medicine helps relieve symptoms of eczema: - dry skin - body rashes - cracked skin - itching"
+      ],
+      "set_id": "000cf6bc-9e52-4261-9c73-4087c5ba1142",
+      "id": "9e770f5d-cbc0-4eb9-8093-cbf96900693a",
+      "active_ingredient": [
+        "ACTIVE INGREDIENTS HPUS Fumaria officinalis (Common fumitory) 6C Natrum muriaticum (Salt) 6C Agaricus muscarius (Fly agaric) 6C Petroleum (Rock-oil) 6C Sepia (Sepia) 6C Kali arsenicosum (Potassium arsenite) 6C Alumina (Alumina) 6C"
+      ],
+      "dosage_and_administration_table": [
+        "<table ID=\"i8eb6b944-b89d-4925-8365-61299226e382\" width=\"100%\" border=\"5\"> <thead> <tr styleCode=\"First Last\"> <th>Age</th> <th>Dose</th> </tr> </thead> <tbody> <tr> <td>Adults and children 12 years of age and older</td> <td>2 tablets</td> </tr> <tr> <td>Children 2 to 11 years of age</td> <td>1 tablet</td> </tr> <tr> <td>Children under 2 years of age</td> <td>Ask a doctor</td> </tr> </tbody> </table>"
+      ]
+    }
+  ]
+}
