@@ -1,155 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>Favorite searches</title>
-    <style type="text/css">
-      button,
-      div,
-      form,
-      input {
-        margin: 10px;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <title>Rolling Range Slider</title>
+    <link rel="stylesheet" href="./style.css" />
   </head>
-
   <body>
-    <div>Prototype for finding info on drugs from the FDA database</div>
-    <div class="container">
-      <h1>search Search</h1>
+    <!-- partial:index.partial.html -->
+    <input id="slider" name="slider" type="range" value="0" />
+    <label for="slider">0</label>
 
-      <!-- searches will Get Dumped Dere -->
-      <div id="searches-view"></div>
-
-      <!-- Rendered Buttons will get Dumped Here  -->
-      <div id="buttons-view"></div>
-
-      <form id="search-form">
-        <label for="search-input">Add a Search</label>
-        <input type="text" id="search-input" /><br />
-
-        <!-- Button triggers new search to be added -->
-        <input id="add-search" type="submit" value="Add a search Bro" />
-      </form>
-
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script type="text/javascript">
-        // Initial array of searchs
-        var searches = [
-          "Lasix",
-          "Albuterol",
-          "ASA",
-          "Amoxicillin",
-          "Digitalis"
-        ];
-
-        // displaysearchInfo function re-renders the HTML to display the appropriate content
-        function displaysearchInfo() {
-          var search = $(this).attr("data-name");
-          var queryURL =
-            "https://api.fda.gov/drug/label.json?search=openfda.brand_name:" +
-            search +
-            "&limit=1";
-
-          // Creating an AJAX call for the specific search button being clicked
-          $.ajax({
-            url: queryURL,
-            method: "GET"
-          }).done(function(response) {
-            console.log(response.results[0].purpose);
-            // Creating a div to hold the search
-            var searchDiv = $("<div class='search'>");
-
-            // Storing the generic data
-            var generic = response.results[0].openfda.generic_name;
-
-            // Creating an element to have the openfda.generic_name displayed
-            var pOne = $("<p>").text("Generic " + generic);
-
-            // Displaying the openfda.generic_name
-            searchDiv.append(pOne);
-
-            // Storing the release year
-            var doseAdmin = response.results[0].dosage_and_administration;
-
-            // Creating an element to hold the release year
-            var pTwo = $("<p>").text(
-              "Dosage and administration : " + doseAdmin
-            );
-
-            // Displaying the release year
-            searchDiv.append(pTwo);
-
-            // Storing the response.results[0].indications_and_usage[0]
-            var indicationsAndUse = response.results[0].indications_and_usage;
-
-            // Creating an element to hold the response.results[0].indications_and_usage[0]
-            var pThree = $("<p>").text(
-              "Indications and Use   : " + indicationsAndUse
-            );
-
-            // Appending the response.results[0].indications_and_usage[0]
-            searchDiv.append(pThree);
-
-            // Retrieving the URL for the purpose
-            var purp = response.results[0].purpose;
-
-            // Creating an element to hold the purpose
-            var purpose = $("<p>").text(purp);
-
-            // Appending the purpose
-            searchDiv.append(purpose);
-
-            // Putting the entire search above the previous searches
-            $("#searches-view").prepend(searchDiv);
-          });
-        }
-
-        // Function for displaying search data
-        function renderButtons() {
-          // Deleting the searches prior to adding new searches
-          // (this is necessary otherwise you will have repeat buttons)
-          $("#buttons-view").empty();
-
-          // Looping through the array of searches
-          for (var i = 0; i < searches.length; i++) {
-            // Then dynamicaly geneopenfda.generic_name buttons for each search in the array
-            // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
-            var a = $("<button>");
-            // Adding a class of search to our button
-            a.addClass("search");
-            // Adding a data-attribute
-            a.attr("data-name", searches[i]);
-            // Providing the initial button text
-            a.text(searches[i]);
-            // Adding the button to the buttons-view div
-            $("#buttons-view").append(a);
-          }
-        }
-
-        // This function handles events where a search button is clicked
-        $("#add-search").on("click", function(event) {
-          event.preventDefault();
-          // This line grabs the input from the textbox
-          var search = $("#search-input")
-            .val()
-            .trim();
-
-          // Adding search from the textbox to our array
-          searches.push(search);
-
-          // Calling renderButtons which handles the processing of our search array
-          renderButtons();
-        });
-
-        // Adding a click event listener to all elements with a class of "search"
-        $(document).on("click", ".search", displaysearchInfo);
-
-        // Calling the renderButtons function to display the intial buttons
-        renderButtons();
-
-        // data from https://open.fda.gov/apis/drug/label/example-api-queries/
-      </script>
-    </div>
+    <!-- partial -->
+    <script src="./script.js"></script>
   </body>
 </html>
