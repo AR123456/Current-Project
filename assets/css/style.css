@@ -16,13 +16,13 @@ path {
   stroke: #efedf5;
   stroke-width: 4px;
 }
-svg {
+/* svg {
   position: absolute;
   top: 0;
   left: 0;
-}
+} */
 body {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 }
