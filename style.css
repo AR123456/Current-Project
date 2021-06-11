@@ -1,22 +1,40 @@
-#player1,
-#player2 {
-  display: inline-block;
-  width: 200px;
-  height: 140px;
-  border: 1px solid black;
-  padding: 5px;
-  margin: 25px;
-  text-align: center;
-  font-size: 7em;
-}
-#output {
-  width: 550px;
-  text-align: center;
-  font-size: 2em;
-}
-button {
-  width: 550px;
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
-  padding: 10px;
-  text-align: center;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #2b88f0;
+  font-family: "Muli", sans-serif;
+  display: flex;
+  flex-direction: column;
+  /* center horizontaly  */
+  align-items: center;
+  /* center vertcally */
+  justify-content: center;
+  height: 100vh;
+  /* dont show scrol bars by default  */
+  overflow: hidden;
+  margin: 0;
+}
+
+circle {
+  stroke: #efedf5;
+  fill: #efedf5;
+  pointer-events: none;
+}
+line {
+  pointer-events: none;
+  stroke: #efedf5;
+  stroke-width: 2px;
+  opacity: 0.05;
+}
+path {
+  stroke: #efedf5;
+  stroke-width: 4px;
+}
+div {
+  background-color: #913366, #5055e4, #3427be, #312ba1, #32049e, #07056b,
+    #00087d;
 }

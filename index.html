@@ -4,17 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dice Game</title>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="d3.v3.min.js"></script>
+
+    <style type="text/css"></style>
   </head>
   <body>
-    <p>The Ultimate Dice Game</p>
-    <div class="gameArea">
-      <div id="output"></div>
-      <div id="player1"></div>
-      <div id="player2"></div>
+    <div class="container">
+      <h1>
+        <a href="https://en.wikipedia.org/wiki/Voronoi_diagram"
+          >Visit Wikipedia to learn more about Voronoi Diagrams</a
+        >
+      </h1>
+      <h2>Roll mouse button or drag a cell around to see in action</h2>
+
+      <div id="chart"></div>
     </div>
-    <button type="button">Roll</button>
-    <script src="index.js"></script>
+    <script src="voronoi.js"></script>
   </body>
 </html>
